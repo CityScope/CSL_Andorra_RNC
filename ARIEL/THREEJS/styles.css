@@ -1,0 +1,9 @@
+/* gradient fallbacks taken from csstricks.com */
+
+body {
+    /* Opera 15+, Chrome 25+, IE 10+, Firefox 16+, Safari 6.1+, iOS 7+, Android 4.4+ */
+    background-image: linear-gradient(to top, rgb(0, 0, 0), 
+    #041225);
+    margin: 0px;
+    overflow: hidden;
+}
