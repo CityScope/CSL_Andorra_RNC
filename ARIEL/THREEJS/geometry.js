@@ -1,3 +1,13 @@
+function DataToGeometry(data, scene) {
+    var rncData = data.dates["2016-08-20"].hours
+    var hrs = Object.keys(rncData).length;
+    UnClustered(rncData, hrs, scene);
+    Clustered(rncData, hrs, scene);
+}
+
+////////////////////////////
+/////////UNC////////////////
+////////////////////////////
 function UnClustered(rncData, hrs, scene) {
     var pntGeo = new THREE.Geometry();
     for (let h = 0; h < hrs; h++) {
@@ -13,55 +23,98 @@ function UnClustered(rncData, hrs, scene) {
         }
     }
     var pntMaterial = new THREE.PointsMaterial({
-        color: 0xffffff
+        size: 0.5,
+        color: 'white'
     });
     var geometry = new THREE.Points(pntGeo, pntMaterial)
     scene.add(geometry);
 }
 
-
+////////////////////////////
+/////////Clustered//////////
+////////////////////////////
 function Clustered(rncData, hrs, scene) {
-    var particleGroup, particleAttributes;
-    var particleTexture = new THREE.TextureLoader().load("img/lf2.png");
+
+
+    var particleGroup;
     particleGroup = new THREE.Object3D();
-    particleAttributes = {
-        startSize: [],
-        startPosition: [],
-        randomness: []
-    };
+    var linesData = [];
+    var particleTexture = new THREE.TextureLoader().load("img/lf2.png");
+
+
     for (let h = 0; h < hrs; h++) {
         let c = rncData[h].C;
-        if (rncData[h].C.lat.length > 0) {
-            for (let i = 0; i < rncData[h].C.lat.length; i++) {
-                //
-                let p = new THREE.Vector3();
-                p.x = 100 * ((100 * (c.lat[i])) - 4250);
-                p.z = 100 * ((c.lon[i] * 100) - 150);
-                p.y = h * 100;
-                //
-                var spriteMaterial = new THREE.SpriteMaterial({
-                    map: particleTexture,
-                    color: 0xffffff
+        var nationInter = Math.max(...c.nation) - Math.min(...c.nation);
+
+        // if (rncData[h].C.lat.length > 0) {
+        for (let i = 0; i < rncData[h].C.personId.length; i++) {
+            //
+            let p = new THREE.Vector3();
+            p.x = 100 * ((100 * (c.lat[i])) - 4250);
+            p.z = 100 * ((c.lon[i] * 100) - 150);
+            p.y = h * 100;
+
+            //
+            var sprite = new THREE.Sprite(spriteMaterial);
+            // sprite.name(rncData[h].C.nation[i]);
+
+            sprite.scale.set(5, 5, 1); // imageWidth, imageHeight
+            sprite.position.set(p.x, p.y, p.z);
+
+            //material
+            var spriteMaterial = new THREE.SpriteMaterial({
+                map: particleTexture,
+                color: 0xffffff
+            });
+
+            sprite.material.color.setHSL((h / 24) * 0.6, 1, .5);
+            sprite.material.blending = THREE.AdditiveBlending; // "glowing" particles
+            particleGroup.add(sprite);
+
+
+            ////////////////////////////
+            //add to line data array
+
+            // if this person id is in array already, add only hr, lat,lon, nation
+            // else
+            // add this person to arrary and the orher values 
+
+            let arrData = ({
+                id: c.personId[i],
+                hr: h,
+                lat: p.x,
+                lon: p.z,
+                nat: c.nation[i]
+            });
+
+            if (!linesData.find(o => o.id === c.personId[i])) { // if this id is a new id in linesData array
+                let p = linesData.push({ //push and get array location in p 
+                    id: c.personId[i]
                 });
-                //
-                var sprite = new THREE.Sprite(spriteMaterial);
-                sprite.scale.set(5, 5, 1); // imageWidth, imageHeight
-                sprite.position.set(p.x, p.y, p.z);
-
-                sprite.material.color.setHSL(Math.random(), 0.9, 0.5);
-                sprite.material.blending = THREE.AdditiveBlending; // "glowing" particles
-                particleGroup.add(sprite);
-
-                // console.log(sprite)
+                // linesData[p].id.push(arrData);
             }
         }
     }
+    console.log(linesData);
     scene.add(particleGroup);
 }
+// lineGroup = new THREE.Object3D();
+// for (let i = 0; index < linesData.length; i++) {
+
+//     //create a blue LineBasicMaterial
+//     var material = new THREE.LineBasicMaterial({
+//         color: 0x0000ff
+//     });
+//     var geometry = new THREE.Geometry();
+//     geometry.vertices.push(new THREE.Vector3(-10, 0, 0));
+
+//     var line = new THREE.Line(geometry, material);
+// }
+// scene.add(lineGroup);
 
 
 
-
+/*
 // function Clustered(rncData, hrs, scene) {
 //     var textureLoader = new THREE.TextureLoader();
 //     var textureFlare = textureLoader.load("img/lf.png");
@@ -114,3 +167,4 @@ function Clustered(rncData, hrs, scene) {
 //     var geometry = new THREE.Points(pntGeo, pntMaterial)
 //     scene.add(geometry);
 // }
+*/
