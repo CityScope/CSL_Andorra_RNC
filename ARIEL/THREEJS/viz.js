@@ -27,7 +27,8 @@ function viz(data) {
         Clustered(rncData, hrs, scene);
 
         renderer = new THREE.WebGLRenderer({
-            alpha: true
+            alpha: true,
+            antialias: true
         });
         renderer.setPixelRatio(window.devicePixelRatio);
         renderer.setSize(window.innerWidth, window.innerHeight);
@@ -49,8 +50,8 @@ function viz(data) {
 
 
     // AXIS sphere
-    // var axes = new THREE.AxisHelper(5000);
-    // scene.add(axes);
+    var axes = new THREE.AxisHelper(100);
+    scene.add(axes);
 
 
     controls = new THREE.OrbitControls(camera, renderer.domElement);
