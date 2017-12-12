@@ -1,7 +1,7 @@
 function DataToGeometry(data, scene) {
     var rncData = data.dates["2016-08-20"].hours
     var hrs = Object.keys(rncData).length;
-    UnClustered(rncData, hrs, scene);
+    // UnClustered(rncData, hrs, scene);
     Clustered(rncData, hrs, scene);
 }
 
@@ -34,70 +34,75 @@ function UnClustered(rncData, hrs, scene) {
 /////////Clustered//////////
 ////////////////////////////
 function Clustered(rncData, hrs, scene) {
-
-
     var particleGroup;
     particleGroup = new THREE.Object3D();
     var linesData = [];
     var particleTexture = new THREE.TextureLoader().load("img/lf2.png");
 
-
     for (let h = 0; h < hrs; h++) {
         let c = rncData[h].C;
         var nationInter = Math.max(...c.nation) - Math.min(...c.nation);
-
-        // if (rncData[h].C.lat.length > 0) {
         for (let i = 0; i < rncData[h].C.personId.length; i++) {
             //
             let p = new THREE.Vector3();
             p.x = 100 * ((100 * (c.lat[i])) - 4250);
             p.z = 100 * ((c.lon[i] * 100) - 150);
             p.y = h * 100;
-
             //
             var sprite = new THREE.Sprite(spriteMaterial);
             // sprite.name(rncData[h].C.nation[i]);
-
             sprite.scale.set(5, 5, 1); // imageWidth, imageHeight
             sprite.position.set(p.x, p.y, p.z);
-
             //material
             var spriteMaterial = new THREE.SpriteMaterial({
                 map: particleTexture,
                 color: 0xffffff
             });
-
             sprite.material.color.setHSL((h / 24) * 0.6, 1, .5);
             sprite.material.blending = THREE.AdditiveBlending; // "glowing" particles
             particleGroup.add(sprite);
 
+            ////////////////////////
+            //add to linedata array
+            ////////////////////////
 
-            ////////////////////////////
-            //add to line data array
-
-            // if this person id is in array already, add only hr, lat,lon, nation
-            // else
-            // add this person to arrary and the orher values 
-
-            let arrData = ({
+            linesData.push([{
                 id: c.personId[i],
-                hr: h,
                 lat: p.x,
                 lon: p.z,
-                nat: c.nation[i]
-            });
+                nat: c.nation[i],
+                hr: h
+            }]);
 
-            if (!linesData.find(o => o.id === c.personId[i])) { // if this id is a new id in linesData array
-                let p = linesData.push({ //push and get array location in p 
-                    id: c.personId[i]
-                });
-                // linesData[p].id.push(arrData);
-            }
         }
     }
-    console.log(linesData);
+    makeLines(linesData);
     scene.add(particleGroup);
 }
+
+function makeLines(linesData) {
+    // console.log(linesData);
+    const grouped = _.groupBy(linesData, linesData => linesData.id);
+
+
+    console.log(grouped);
+}
+
+// if this person id is alread in array , add only hr, lat,lon, nation
+// else add this person to arrary and the orher values 
+// if (!linesData.find(object => object[0].id === c.personId[i])) { // if this id is a new id in linesData array
+//     linesData.push( //push and get array location in p 
+//         [{}, {
+//             arrData
+//         }]
+//     );
+// } else {
+//     linesData[linesData.length] += arrData
+// }
+
+
+/////////////////// line  rending 
+
 // lineGroup = new THREE.Object3D();
 // for (let i = 0; index < linesData.length; i++) {
 
@@ -115,6 +120,8 @@ function Clustered(rncData, hrs, scene) {
 
 
 /*
+/////////////////// flare rending 
+
 // function Clustered(rncData, hrs, scene) {
 //     var textureLoader = new THREE.TextureLoader();
 //     var textureFlare = textureLoader.load("img/lf.png");
@@ -138,7 +145,7 @@ function Clustered(rncData, hrs, scene) {
 //     }
 // }
 
-/////////////////// Points
+/////////////////// Points rending 
 // function Clustered(rncData, hrs, scene) {
 //     var textureLoader = new THREE.TextureLoader();
 //     var textureFlare = textureLoader.load("img/lf.png");
