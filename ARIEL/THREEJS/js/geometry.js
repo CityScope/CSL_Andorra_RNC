@@ -4,15 +4,12 @@ function DataToGeometry(data, scene) {
     UnClustered(rncData, hrs, scene);
     Clustered(rncData, hrs, scene);
 }
-
 ////////////////////////////
 /////////UNC////////////////
 ////////////////////////////
-
-
 function UnClustered(rncData, hrs, scene) {
-    var pntGeo = new THREE.Geometry();
     var pntTxt = new THREE.TextureLoader().load("img/lf3.png");
+    var pntGeo = new THREE.Geometry();
 
     for (let h = 0; h < hrs; h++) {
         let unc = rncData[h].unC;
@@ -23,20 +20,19 @@ function UnClustered(rncData, hrs, scene) {
             p.y = h * 100;
             pntGeo.vertices.push(p);
         }
-
-        var pntMaterial = new THREE.PointsMaterial({
+        pntMaterial = new THREE.PointsMaterial({
             size: 2,
             map: pntTxt,
-            alphaTest: 0.5
+            alphaTest: 0.5,
+            blending: THREE.AdditiveBlending,
+            color: "grey"
+
         });
-        pntGeo.material.color.setHSL((h / 24), 1, .5)
+        // pntMaterial.color.setHSL((h / 24), 1, .5);
+        var geometry = new THREE.Points(pntGeo, pntMaterial)
     }
-    pntMaterial.blending = THREE.AdditiveBlending; // "glowing" particles
-    var geometry = new THREE.Points(pntGeo, pntMaterial)
     scene.add(geometry);
 }
-
-
 ////////////////////////////
 /////////Clustered//////////
 ////////////////////////////
@@ -64,10 +60,11 @@ function Clustered(rncData, hrs, scene) {
             var spriteMaterial = new THREE.SpriteMaterial({
                 map: particleTexture
                 // alphaTest: 0.5
-
             });
             sprite.material.blending = THREE.AdditiveBlending; // "glowing" particles
-            sprite.material.color.setHSL((h / 24), 1, .5);
+            // sprite.material.color.setHSL(((h / 24) * 0.4) + 0.5, 1, .5);
+            sprite.material.color.setHSL(0.8, 1, 0.5);
+
             spriteGroup.add(sprite);
 
             ////////////////////////
@@ -85,7 +82,6 @@ function Clustered(rncData, hrs, scene) {
     makeLines(linesData, scene);
     scene.add(spriteGroup);
 }
-
 ////////////////////////////
 /////////LINES//////////////
 ////////////////////////////
@@ -98,18 +94,22 @@ function makeLines(linesData, scene) {
     //make lines
     lineGroup = new THREE.Object3D();
     let color = new THREE.Color();
+    let nation;
     color.setHSL(5, 1, 0);
-    var material = new THREE.LineBasicMaterial({
-        color: color,
-        // blending: THREE.AdditiveBlending
-    });
     $.each(grpById, function (index, value) {
         if (value.length > 1) { // if person was in more than one cluster over time
+            nation = value[0].nat;
             var geometry = new THREE.Geometry();
             for (let i = 0; i < value.length; i++) {
                 geometry.vertices.push(new THREE.Vector3(value[i].lat, value[i].hr * 100, value[i].lon));
             }
+            var material = new THREE.LineBasicMaterial({
+                color: color,
+                // blending: THREE.AdditiveBlending
+            });
             var line = new THREE.Line(geometry, material);
+            line.material.color.setHSL(((value.length / 12) * 0.4) + 0.5, 1, .5);
+            line.name = "User ID: " + index + " from: " + nation + " stayed in a cluster for: " + value.length + " hours";
             lineGroup.add(line)
         }
     });
