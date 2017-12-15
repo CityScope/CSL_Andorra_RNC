@@ -1,9 +1,9 @@
 var container;
 var camera, scene, renderer, particles, geometry, material, i, h, color, colors = [],
-    sprite, size;
+    sprite, size, controls;
 var mouse = new THREE.Vector2();
 var raycaster = new THREE.Raycaster();
-var lineGroup;
+var lineGroup, pntGroup;
 
 
 
@@ -42,8 +42,8 @@ function viz(data) {
         container.appendChild(renderer.domElement);
 
         // camera
-        camera = new THREE.PerspectiveCamera(30, window.innerWidth / window.innerHeight, 1, 1000);
-        camera.position.z = 1000;
+        camera = new THREE.PerspectiveCamera(20, window.innerWidth / window.innerHeight, 1, 10000);
+
         controls = new THREE.TrackballControls(camera, renderer.domElememnt);
         controls.rotateSpeed = 1;
         controls.zoomSpeed = 1;
@@ -51,16 +51,26 @@ function viz(data) {
         controls.noZoom = false;
         controls.noPan = false;
         controls.staticMoving = false;
-        controls.dynamicDampingFactor = .5;
+        controls.dynamicDampingFactor = .3;
         controls.keys = [65, 83, 68];
         controls.addEventListener('change', render);
 
+        camera.position.set(300, 1000, -100);
+        controls.target = new THREE.Vector3(-100, 1000, 500); //look at bypass on trackball 
+
+        camera.up = new THREE.Vector3(0, 1, 0);
+
         // AXIS sphere
-        var axes = new THREE.AxisHelper(500);
+        var axes = new THREE.AxisHelper(100);
         scene.add(axes);
+        //grid helper 
+        var gridHelper = new THREE.GridHelper(10000, 100, 'white', 0x4f4f4f);
+        gridHelper.position.y = 0;
+        gridHelper.position.x = 0;
+        scene.add(gridHelper);
 
         //fog
-        scene.fog = new THREE.Fog(0x041225, 1, 5000);
+        scene.fog = new THREE.Fog(0x041225, 0, 3000);
 
 
         ////////////////////////////
@@ -70,8 +80,8 @@ function viz(data) {
 
         window.addEventListener('resize', onWindowResize, false);
         document.addEventListener('mousemove', onDocumentMouseMove, false);
-        // document.addEventListener('mousedown', onDocumentMouseDown, false);
-        // document.addEventListener('mouseup', onDocumentMouseUp, false);
+        document.addEventListener('mousedown', onDocumentMouseDown, false);
+        document.addEventListener('mouseup', onDocumentMouseUp, false);
     }
 
     function onWindowResize(event) {
@@ -83,6 +93,13 @@ function viz(data) {
     }
 
     function animate() {
+        pntGroup.geometry.vertices.forEach(function (m) {
+            m.z += 0.5 * Math.random() * Math.sin(Date.now());
+            m.x += 0.5 * Math.random() * Math.sin(Date.now());
+        });
+
+        pntGroup.geometry.verticesNeedUpdate = true;
+
         requestAnimationFrame(animate);
         render();
         controls.update();
