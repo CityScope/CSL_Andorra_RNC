@@ -115,5 +115,4 @@ function makeLines(linesData, scene) {
             lineGroup.add(line)
         }
     });
-    scene.add(lineGroup);
 }
