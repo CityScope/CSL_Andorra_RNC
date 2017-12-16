@@ -44,7 +44,7 @@ function Clustered(rncData, hrs, scene) {
     for (let h = 0; h < hrs; h++) {
         let c = rncData[h].C;
 
-        for (let i = 0; i < rncData[h].C.personId.length; i++) {
+        for (let i = 0; i < c.personId.length; i++) {
             //
             let p = new THREE.Vector3();
             p.x = 100 * ((100 * (c.lat[i])) - 4250);
@@ -53,7 +53,7 @@ function Clustered(rncData, hrs, scene) {
             //
             var sprite = new THREE.Sprite(spriteMaterial);
             // sprite.name(rncData[h].C.nation[i]);
-            sprite.scale.set(2, 2, 1); // imageWidth, imageHeight
+            sprite.scale.set(1, 1, 1); // imageWidth, imageHeight
             sprite.position.set(p.x, p.y, p.z);
             sprite.name = c.personId[i]
             //material
@@ -61,14 +61,18 @@ function Clustered(rncData, hrs, scene) {
                 map: particleTexture
                 // alphaTest: 0.5
             });
-
             //materials 
-            // sprite.material.blending = THREE.AdditiveBlending; // "glowing" particles
-            // sprite.material.color.setHSL(((h / 24) * 0.4) + 0.5, 1, .5);
-            // sprite.material.color.setHSL(0.8, 1, 0.5);
+            sprite.material.blending = THREE.AdditiveBlending; // "glowing" particles
+            if (c.nation[i] === 208) {
+                sprite.material.color.setHSL(0.11, 1, 0.3)
+            } else if (c.nation[i] === 214) {
+                sprite.material.color.setHSL(0.6, 1, 0.3)
+            } else {
+                sprite.material.color.setHSL(0, 0, 0.2);
+            }
 
+            // sprite.material.color.setHSL(((h / 24) * 0.4) + 0.5, 1, .5); // grad color by hour
             spriteGroup.add(sprite);
-
             ////////////////////////
             //add data to linedata array
             ////////////////////////
@@ -110,7 +114,17 @@ function makeLines(linesData, scene) {
                 // blending: THREE.AdditiveBlending
             });
             var line = new THREE.Line(geometry, material);
-            line.material.color.setHSL(.56, 1, (value.length / 12) * 0.5);
+
+            // line.material.color.setHSL(.56, 1, (value.length / 12) * 0.5);
+
+            if (nation === 208) {
+                line.material.color.setHSL(0.11, 1, 0.5)
+            } else if (nation === 214) {
+                line.material.color.setHSL(0.6, 1, 0.5)
+            } else {
+                line.material.color.setHSL(0, 0, .5);
+            }
+
             line.name = "User ID: " + index + " from: " + nation + "<br>" + " stayed in a cluster for " + value.length + " hours";
             lineGroup.add(line)
         }
