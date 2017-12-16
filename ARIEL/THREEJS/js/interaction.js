@@ -9,6 +9,41 @@ let thisLine;
 /////UI/////////////////////
 ////////////////////////////
 
+function onWindowResize(event) {
+    windowHalfX = window.innerWidth / 2;
+    windowHalfY = window.innerHeight / 2;
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+}
+
+// var hoursDiv = document.createElement("div");
+// hoursDiv.innerHTML = "12";
+
+function onCameraChange() {
+    var proj = toScreenPosition(axes, camera);
+    // console.log(proj);
+    //     hoursDiv.style.left = proj.x + 'px';
+    //     hoursDiv.style.top = proj.y + 'px';
+}
+
+function toScreenPosition(obj, camera) {
+    var vector = new THREE.Vector3();
+    var widthHalf = 0.5 * renderer.context.canvas.width;
+    var heightHalf = 0.5 * renderer.context.canvas.height;
+    obj.updateMatrixWorld();
+    vector.setFromMatrixPosition(obj.matrixWorld);
+    vector.project(camera);
+    vector.x = (vector.x * widthHalf) + widthHalf;
+    vector.y = -(vector.y * heightHalf) + heightHalf;
+    return {
+        x: vector.x,
+        y: vector.y
+    };
+}
+
+
+
 ////////////BUTTON METHOD///////////////////
 function makeButton(btnDiv, btnTxt) {
     //  Create the button
@@ -40,7 +75,7 @@ linesBtn.addEventListener("click", function () {
 
 //////////ANIM BUTTON/////////////////////////
 animBtn = makeButton("body", "Animate IDs")
-animBtn.style.top = "92%";
+animBtn.style.top = "92%"; // locate button 
 
 var animBtnFlag = 0;
 animBtn.addEventListener("click", function () {
@@ -69,7 +104,7 @@ function onDocumentMouseMove(event) {
 
 function onDocumentMouseDown(event) {
     let div = document.getElementById('lineInfo');
-  
+
     if (btnFlag === 1) {
         mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
         mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;

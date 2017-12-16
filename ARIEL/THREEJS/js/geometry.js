@@ -7,7 +7,7 @@ function DataToGeometry(data, scene) {
 ////////////////////////////
 /////////UNC////////////////
 ////////////////////////////
-function UnClustered(rncData, hrs, scene) {
+function UnClustered(rncData, hrs) {
     var pntTexture = new THREE.TextureLoader().load("img/lf3.png");
     var pnt = new THREE.Geometry();
     pntMaterial = new THREE.PointsMaterial({
@@ -35,8 +35,8 @@ function UnClustered(rncData, hrs, scene) {
 ////////////////////////////
 /////////Clustered//////////
 ////////////////////////////
-function Clustered(rncData, hrs, scene) {
-    var spriteGroup;
+function Clustered(rncData, hrs) {
+
     spriteGroup = new THREE.Object3D();
     var linesData = [];
     var particleTexture = new THREE.TextureLoader().load("img/lf3.png");
@@ -91,7 +91,7 @@ function Clustered(rncData, hrs, scene) {
 ////////////////////////////
 /////////LINES//////////////
 ////////////////////////////
-function makeLines(linesData, scene) {
+function makeLines(linesData) {
     //groups all same people together so lines could be constructed 
     const grpById = _.groupBy(linesData, function (d) {
         return d.id;
@@ -119,13 +119,18 @@ function makeLines(linesData, scene) {
 
             if (nation === 208) {
                 line.material.color.setHSL(0.11, 1, 0.5)
+                line.name = "User ID: " + index + " from Spain" + "<br>" + " stayed in a cluster for " + value.length + " hours";
+
             } else if (nation === 214) {
                 line.material.color.setHSL(0.6, 1, 0.5)
+                line.name = "User ID: " + index + " from France" + "<br>" + " stayed in a cluster for " + value.length + " hours";
+
             } else {
-                line.material.color.setHSL(0, 0, .5);
+                line.material.color.setHSL(0, 0, .25);
+                line.name = "User ID: " + index + " from: " + nation + "<br>" + " stayed in a cluster for " + value.length + " hours";
+
             }
 
-            line.name = "User ID: " + index + " from: " + nation + "<br>" + " stayed in a cluster for " + value.length + " hours";
             lineGroup.add(line)
         }
     });
