@@ -12,11 +12,25 @@ var lineGroup, pntGroup, spriteGroup;
 $(window).on("load", parseJson());
 var hoursData;
 
+prgsDiv = document.createElement('div');
+prgsDiv.setAttribute("id", "prgsDiv");
+document.body.appendChild(prgsDiv);
+
+
 function parseJson() {
     $.getJSON('data/full.json', function (data) {
         viz(data);
+    }).progress(function (e) {
+        if (e.loaded < e.total) {
+            prgsPer = 100 * (e.loaded / e.total)
+            prgsDiv.innerHTML = prgsPer;
+        } else {
+            prgsDiv.innerHTML = null;
+            document.getElementById("prgsDiv").remove();
+        }
     })
 }
+
 ////////////////////////////
 /////////SETUP THREE.JS/////
 ////////////////////////////

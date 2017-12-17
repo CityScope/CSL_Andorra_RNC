@@ -20,6 +20,20 @@ body {
     z-index: 1000;
 }
 
+#prgsDiv {
+    float: left;
+    left: 50%;
+    top: 50%;
+    width: auto;
+    height: auto;
+    position: fixed;
+    font-family: "Roboto Condensed";
+    color: rgb(255, 255, 255);
+    background: none;
+    font-size: 100px;
+    z-index: 1000;
+}
+
 button {
     float: left;
     left: 5%;
