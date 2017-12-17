@@ -20,13 +20,13 @@ document.body.appendChild(prgsDiv);
 function parseJson() {
     $.getJSON('data/full.json', function (data) {
         viz(data);
-    }).progress(function (e) {
-        if (e.loaded < e.total) {
-            prgsPer = 100 * (e.loaded / e.total)
+    }).progress(function (dl) {
+        if (dl.loaded < dl.total) {
+            prgsPer = 100 * (dl.loaded / dl.total)
             prgsDiv.innerHTML = prgsPer;
         } else {
             prgsDiv.innerHTML = null;
-            document.getElementById("prgsDiv").remove();
+            // document.getElementById("prgsDiv").remove();
         }
     })
 }
