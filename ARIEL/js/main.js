@@ -1,16 +1,33 @@
-var container;
-var scene, renderer, particles, geometry, material, i, h, color,
-    sprite, size, controls, axes;
-var camera, camX, camZ;
-var mouse = new THREE.Vector2();
-var raycaster = new THREE.Raycaster();
-var lineGroup, pntGroup, spriteGroup;
+////////////////////////////
+////GLOBAL VARS ////////////
+////////////////////////////
+var container
+var scene
+var renderer
+var controls
+var camera
+var camX
+var camZ
+var mouse = new THREE.Vector2()
+var raycaster = new THREE.Raycaster()
+var lineGroup
+var pntGroup
+var spriteGroup
+var hoursData
+var axes
+var pastClicks = []
+var thisLine
+
+var hoursDiv
+var allhoursDiv = []
+var hrsTextHolder = new THREE.Group()
+var cube
+
 
 ////////////////////////////
 /////////DATA from JSON/////
 ////////////////////////////
 $(window).on("load", parseJson());
-var hoursData;
 
 prgsDiv = document.createElement('div');
 prgsDiv.setAttribute("id", "prgsDiv");
@@ -22,7 +39,7 @@ function parseJson() {
         viz(data);
     }).progress(function (dl) {
         if (dl.loaded < dl.total) {
-            prgsPer = 100 * (dl.loaded / dl.total)
+            prgsPer = Math.floor(100 * (dl.loaded / dl.total)) + '%'
             prgsDiv.innerHTML = prgsPer;
         } else {
             prgsDiv.innerHTML = null;
@@ -60,28 +77,41 @@ function viz(data) {
         controls.staticMoving = false;
         controls.dynamicDampingFactor = .3;
         controls.keys = [65, 83, 68];
+
         controls.addEventListener('change', function () {
             render();
-            onCameraChange();
+            onCameraChange(); //calls update for hours text locations  
         });
         //cam pos 
         camera.position.set(73, 860, 170);
         controls.target = new THREE.Vector3(85, 850, 350); //look at bypass on trackball 
         camera.up = new THREE.Vector3(0, 1, 0);
-        // AXIS sphere
+        
+        
+        // AXIS 
         axes = new THREE.AxisHelper(100);
-        scene.add(axes);
+        // scene.add(axes);
+
         //grid helper 
         var gridHelper = new THREE.GridHelper(10000, 100, 'white', 0x4f4f4f);
         gridHelper.position.y = 0;
         gridHelper.position.x = 0;
-        scene.add(gridHelper);
+        // scene.add(gridHelper);
         //fog
-        scene.fog = new THREE.Fog(0x041225, 0, 3000);
+        scene.fog = new THREE.Fog(0x01070E, 100, 1200);
+
         ////////////////////////////
         ////CALL DRAW METHODS///////
         ////////////////////////////
         DataToGeometry(data, scene);
+        HoursText();
+
+
+
+        ////////////////////////////
+        ////CALL EVENTS METHODS/////
+        ////////////////////////////
+
         window.addEventListener('resize', onWindowResize, false);
         document.addEventListener('mousemove', onDocumentMouseMove, false);
         document.addEventListener('mousedown', onDocumentMouseDown, false);
@@ -95,7 +125,7 @@ function viz(data) {
                 Math.random()
                 let sinDate = Math.sin(Date.now() * 0.001);
                 let s = sinDate;
-                // m.position.z += 0.1 * math;
+                // m.position.z += 0.1 * math; //for UNC animation 
                 // m.position.x -= 0.1 * math;
                 m.scale.x = s;
                 m.scale.y = s;

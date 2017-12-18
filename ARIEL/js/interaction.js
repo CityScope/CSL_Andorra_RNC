@@ -1,49 +1,3 @@
-////////////////////////////
-//////VARS//////////////////
-////////////////////////////
-
-let pastClicks = [];
-let thisLine;
-
-////////////////////////////
-/////UI/////////////////////
-////////////////////////////
-
-function onWindowResize(event) {
-    windowHalfX = window.innerWidth / 2;
-    windowHalfY = window.innerHeight / 2;
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-}
-
-// var hoursDiv = document.createElement("div");
-// hoursDiv.innerHTML = "12";
-
-function onCameraChange() {
-    var proj = toScreenPosition(axes, camera);
-    // console.log(proj);
-    //     hoursDiv.style.left = proj.x + 'px';
-    //     hoursDiv.style.top = proj.y + 'px';
-}
-
-function toScreenPosition(obj, camera) {
-    var vector = new THREE.Vector3();
-    var widthHalf = 0.5 * renderer.context.canvas.width;
-    var heightHalf = 0.5 * renderer.context.canvas.height;
-    obj.updateMatrixWorld();
-    vector.setFromMatrixPosition(obj.matrixWorld);
-    vector.project(camera);
-    vector.x = (vector.x * widthHalf) + widthHalf;
-    vector.y = -(vector.y * heightHalf) + heightHalf;
-    return {
-        x: vector.x,
-        y: vector.y
-    };
-}
-
-
-
 ////////////BUTTON METHOD///////////////////
 function makeButton(btnDiv, btnTxt) {
     //  Create the button
@@ -58,7 +12,6 @@ function makeButton(btnDiv, btnTxt) {
 
 ////////LINES BUTTON/////////////////////////
 linesBtn = makeButton("body", "Show cluster generation")
-
 // Add event handler
 let btnFlag = 0;
 linesBtn.addEventListener("click", function () {
@@ -90,7 +43,7 @@ animBtn.addEventListener("click", function () {
 });
 
 ////////////////////////////
-/////EVENTS////////////////
+/////EVENTS/////////////////
 ////////////////////////////
 
 function onDocumentMouseUp(event) {
@@ -123,4 +76,16 @@ function onDocumentMouseDown(event) {
     } else {
         div.innerHTML = null;
     }
+}
+
+////////////////////////////
+/////WINDOW RESIZE//////////
+////////////////////////////
+
+function onWindowResize(event) {
+    windowHalfX = window.innerWidth / 2;
+    windowHalfY = window.innerHeight / 2;
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
 }

@@ -4,10 +4,17 @@ function DataToGeometry(data, scene) {
     UnClustered(rncData, hrs, scene);
     Clustered(rncData, hrs, scene);
 }
+
+
 ////////////////////////////
 /////////UNC////////////////
 ////////////////////////////
 function UnClustered(rncData, hrs) {
+
+    ////////////////////////////
+    /// POINT///////////////////
+    ////////////////////////////
+
     var pntTexture = new THREE.TextureLoader().load("img/lf3.png");
     var pnt = new THREE.Geometry();
     pntMaterial = new THREE.PointsMaterial({
@@ -32,6 +39,7 @@ function UnClustered(rncData, hrs) {
     }
     scene.add(pntGroup);
 }
+
 ////////////////////////////
 /////////Clustered//////////
 ////////////////////////////
@@ -52,7 +60,6 @@ function Clustered(rncData, hrs) {
             p.y = h * 50;
             //
             var sprite = new THREE.Sprite(spriteMaterial);
-            // sprite.name(rncData[h].C.nation[i]);
             sprite.scale.set(1, 1, 1); // imageWidth, imageHeight
             sprite.position.set(p.x, p.y, p.z);
             sprite.name = c.personId[i]
@@ -88,6 +95,7 @@ function Clustered(rncData, hrs) {
     makeLines(linesData, scene);
     scene.add(spriteGroup);
 }
+
 ////////////////////////////
 /////////LINES//////////////
 ////////////////////////////
@@ -134,4 +142,54 @@ function makeLines(linesData) {
             lineGroup.add(line)
         }
     });
+}
+
+////////////////////////////
+///HOURS INDICATOR/////////
+////////////////////////////
+function HoursText() {
+    // hrsTextHolder geomtry
+    for (let h = 0; h < 24; h++) {
+        // //make all 24 divs 
+        hoursDiv = document.createElement('div');
+        hoursDiv.setAttribute("id", "hoursDiv");
+        document.body.appendChild(hoursDiv);
+        hoursDiv.style.position = "absolute";
+        allhoursDiv.push(hoursDiv)
+
+        // // make text cube ref. points 
+        cube = new THREE.Mesh(new THREE.BoxGeometry(10, 10, 10), new THREE.MeshBasicMaterial({
+            color: 0x00ff00
+        }));
+        cube.position.x = 0;
+        cube.position.y = (h * 50) + 5;
+        cube.position.z = 100;
+        hrsTextHolder.add(cube);
+    }
+}
+
+//listen to camera move for each text object
+function onCameraChange() {
+    for (let h = 0; h < allhoursDiv.length; h++) {
+        var proj = toScreenPosition(hrsTextHolder.children[h], camera);
+        allhoursDiv[h].style.left = proj.x + 'px';
+        allhoursDiv[h].style.top = proj.y + 'px';
+        allhoursDiv[h].innerHTML = "hour " + h;
+    }
+}
+
+//returns location on screen
+function toScreenPosition(obj, camera) {
+    var vector = new THREE.Vector3();
+    var widthHalf = 0.25 * renderer.context.canvas.width;
+    var heightHalf = 0.25 * renderer.context.canvas.height;
+    obj.updateMatrixWorld();
+    vector.setFromMatrixPosition(obj.matrixWorld);
+    vector.project(camera);
+    vector.x = (vector.x * widthHalf) + widthHalf;
+    vector.y = -(vector.y * heightHalf) + heightHalf;
+    return {
+        x: vector.x,
+        y: vector.y
+    };
 }

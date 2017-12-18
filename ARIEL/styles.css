@@ -30,8 +30,20 @@ body {
     font-family: "Roboto Condensed";
     color: rgb(255, 255, 255);
     background: none;
-    font-size: 200px;
+    font-size: 100px;
     z-index: 9000;
+}
+
+#hoursDiv {
+    -webkit-text-stroke: 0.25px rgb(180, 180, 180);
+    position: fixed;
+    font-family: "Roboto Condensed";
+    color: rgba(255, 255, 255, 0);
+    background: none;
+    font-size: 15px;
+    z-index: 100;
+    width: auto;
+    height: auto;
 }
 
 button {
