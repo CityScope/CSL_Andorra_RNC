@@ -6,7 +6,7 @@
     "checkBox_Clip": false, 
     "checkBox_Frame": false, 
     "checkBox_Shading": true, 
-    "checkBox_Sides": true, 
+    "checkBox_Sides": false, 
     "checkBox_Surroundings": false, 
     "checkBox_TransparentBackground": false, 
     "comboBox_ClipLayer": "gis_osm_buildings_a_free_120171217150455507", 
@@ -58,11 +58,8 @@
       "styleWidget4": {}, 
       "styleWidget5": {}, 
       "visible": true
-    }
-  }, 
-  "OutputFilename": "/Users/noyman/Desktop/Untitled.html", 
-  "POLYGON": {
-    "gis_osm_buildings_a_free_120171217150455507": {
+    }, 
+    "gis_osm_waterways_free_120171217150455741": {
       "checkBox_Clip": true, 
       "checkBox_ExportAttrs": false, 
       "comboBox_Label": null, 
@@ -73,10 +70,44 @@
         "editText": "0", 
         "type": 4
       }, 
+      "labelHeightWidget": {}, 
+      "radioButton_IntersectingFeatures": true, 
+      "styleWidget0": {
+        "comboData": 1, 
+        "comboText": "Feature style", 
+        "editText": "", 
+        "type": 2
+      }, 
+      "styleWidget1": {
+        "comboData": 1, 
+        "comboText": "Feature style", 
+        "editText": "", 
+        "type": 5
+      }, 
+      "styleWidget2": {}, 
+      "styleWidget3": {}, 
+      "styleWidget4": {}, 
+      "styleWidget5": {}, 
+      "visible": false
+    }
+  }, 
+  "OutputFilename": "/Users/noyman/Desktop/Untitled.html", 
+  "POLYGON": {
+    "gis_osm_buildings_a_free_120171217150455507": {
+      "checkBox_Clip": true, 
+      "checkBox_ExportAttrs": true, 
+      "comboBox_Label": 4, 
+      "comboBox_ObjectType": 0, 
+      "heightWidget": {
+        "comboData": 2, 
+        "comboText": "Relative to DEM", 
+        "editText": "0", 
+        "type": 4
+      }, 
       "labelHeightWidget": {
-        "comboData": 3, 
-        "comboText": "Height from top", 
-        "editText": "3478.95084577", 
+        "comboData": 1, 
+        "comboText": "Fixed value", 
+        "editText": "55", 
         "type": 6
       }, 
       "radioButton_IntersectingFeatures": true, 
@@ -93,9 +124,9 @@
         "type": 5
       }, 
       "styleWidget2": {
-        "comboData": 101, 
-        "comboText": "\"code\"", 
-        "editText": "1", 
+        "comboData": 1, 
+        "comboText": "Fixed value", 
+        "editText": "50", 
         "type": 1
       }, 
       "styleWidget3": {}, 

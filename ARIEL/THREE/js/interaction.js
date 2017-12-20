@@ -55,22 +55,32 @@ function onDocumentMouseMove(event) {
     syncframe = 0;
 }
 
+//counter
+let clickedArray = [];
+
 function onDocumentMouseDown(event) {
     let div = document.getElementById('lineInfo');
-
     if (btnFlag === 1) {
         mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
         mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
         raycaster.setFromCamera(mouse.clone(), camera);
         let inter = raycaster.intersectObjects(lineGroup.children, true);
-        // if there is interaction 
-        if (inter.length > 0) {
-            // for (let i = 0; i < lineGroup.children.length; i++) {
-            //     lineGroups.children[i].material.color.set("black");
-            // };
 
-            thisLine = inter[0].object.clone();
-            thisLine.material.color.setHSL(0.8, 1, 0.5);
+        // if there is interaction 
+        if (inter.length > 0 && clickedArray.includes(inter[0].object.uuid) === false) {
+            clickedArray.push(inter[0].object.uuid);
+            curve = new THREE.CatmullRomCurve3(inter[0].object.geometry.vertices, 0);
+            tubeGeometry = new THREE.TubeGeometry(curve, 100,1 , inter[0].object.geometry.vertices.length, false)
+            tubeMaterial = new THREE.MeshBasicMaterial({
+                color: inter[0].object.material.color,
+                transparent: true,
+                opacity: 0.5
+            });
+            tubeMaterial.blending = THREE.AdditiveBlending;
+            tubeLine = new THREE.Mesh(tubeGeometry, tubeMaterial)
+            scene.add(tubeLine);
+
+            // text into div 
             div.innerHTML = inter[0].object.name;
         }
     } else {

@@ -65,17 +65,25 @@ function Clustered(rncData, hrs) {
             sprite.name = c.personId[i]
             //material
             var spriteMaterial = new THREE.SpriteMaterial({
-                map: particleTexture
-                // alphaTest: 0.5
+                map: particleTexture,
+                // opacity: 0.5
             });
             //materials 
+            // #F26101 spain
+            // #FFFFFF andorra 
+            // #91BED4 // extra
+            // #0071BC france 
+            // #304269 b/g
+            // #EC4269 visitors 
             sprite.material.blending = THREE.AdditiveBlending; // "glowing" particles
             if (c.nation[i] === 208) {
-                sprite.material.color.setHSL(0.11, 1, 0.3)
+                sprite.material.color.setHex(0xF26101)
             } else if (c.nation[i] === 214) {
-                sprite.material.color.setHSL(0.6, 1, 0.3)
+                sprite.material.color.setHex(0x0071BC)
+            } else if (c.nation[i] === 213) {
+                sprite.material.color.setHex(0xFFFFFF)
             } else {
-                sprite.material.color.setHSL(0, 0, 0.2);
+                sprite.material.color.setHex(0xEC4269)
             }
 
             // sprite.material.color.setHSL(((h / 24) * 0.4) + 0.5, 1, .5); // grad color by hour
@@ -126,15 +134,16 @@ function makeLines(linesData) {
             // line.material.color.setHSL(.56, 1, (value.length / 12) * 0.5);
 
             if (nation === 208) {
-                line.material.color.setHSL(0.11, 1, 0.5)
+                line.material.color.setHex(0xF26101)
                 line.name = "User ID: " + index + " from Spain" + "<br>" + " stayed in a cluster for " + value.length + " hours";
-
             } else if (nation === 214) {
-                line.material.color.setHSL(0.6, 1, 0.5)
+                line.material.color.setHex(0x0071BC)
                 line.name = "User ID: " + index + " from France" + "<br>" + " stayed in a cluster for " + value.length + " hours";
-
+            } else if (nation === 213) {
+                line.material.color.setHex(0xFFFFFF)
+                line.name = "User ID: " + index + " from Andorra" + "<br>" + " stayed in a cluster for " + value.length + " hours";
             } else {
-                line.material.color.setHSL(0, 0, .25);
+                line.material.color.setHex(0xEC4269)
                 line.name = "User ID: " + index + " from: " + nation + "<br>" + " stayed in a cluster for " + value.length + " hours";
 
             }

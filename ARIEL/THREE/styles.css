@@ -1,9 +1,15 @@
-/* gradient fallbacks taken from csstricks.com */
-
 body {
-    background-image: radial-gradient(farthest-corner at 40px 40px, rgb(0, 0, 0) 0%, #041225 100%);
+    /* background-image: radial-gradient(farthest-corner at 40px 40px, rgb(0, 0, 0) 0%, #041225 100%); */
+    background: -webkit-radial-gradient(rgb(0, 0, 0) 0%, #0d1e36 100%);
     margin: 0px;
     overflow: hidden;
+}
+
+#logo {
+    top: 10%;
+    left: 3%;
+    position: fixed;
+    z-index: 1000;
 }
 
 #lineInfo {
@@ -31,7 +37,7 @@ body {
     color: rgb(255, 255, 255);
     background: none;
     font-size: 100px;
-    z-index: 9000;
+    z-index: 1000;
 }
 
 #hoursDiv {
@@ -41,7 +47,7 @@ body {
     color: rgba(255, 255, 255, 0);
     background: none;
     font-size: 15px;
-    z-index: 100;
+    z-index: 1000;
     width: auto;
     height: auto;
 }
