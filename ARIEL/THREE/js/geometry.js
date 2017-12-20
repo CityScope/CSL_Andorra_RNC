@@ -1,5 +1,13 @@
+//materials 
+// #F26101 spain
+// #FFFFFF andorra 
+// #91BED4 // extra
+// #0071BC france 
+// #304269 b/g
+// #EC4269 visitors 
+
 function DataToGeometry(data, scene) {
-    var rncData = data.dates["2016-08-20"].hours
+    var rncData = data.dates["2016-08-20"].hours // to be fixed 
     var hrs = Object.keys(rncData).length;
     UnClustered(rncData, hrs, scene);
     Clustered(rncData, hrs, scene);
@@ -66,22 +74,19 @@ function Clustered(rncData, hrs) {
             //material
             var spriteMaterial = new THREE.SpriteMaterial({
                 map: particleTexture,
-                // opacity: 0.5
+                transparent: true
             });
-            //materials 
-            // #F26101 spain
-            // #FFFFFF andorra 
-            // #91BED4 // extra
-            // #0071BC france 
-            // #304269 b/g
-            // #EC4269 visitors 
             sprite.material.blending = THREE.AdditiveBlending; // "glowing" particles
+
             if (c.nation[i] === 208) {
                 sprite.material.color.setHex(0xF26101)
+
             } else if (c.nation[i] === 214) {
                 sprite.material.color.setHex(0x0071BC)
+
             } else if (c.nation[i] === 213) {
-                sprite.material.color.setHex(0xFFFFFF)
+                sprite.material.color.setStyle("rgb(255, 255, 255)")
+                sprite.material.opacity = 0.25;
             } else {
                 sprite.material.color.setHex(0xEC4269)
             }
