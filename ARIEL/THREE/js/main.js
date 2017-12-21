@@ -22,6 +22,7 @@ var hoursDiv
 var allhoursDiv = []
 var hrsTextHolder = new THREE.Group()
 var cube
+var lensFlare
 
 
 ////////////////////////////
@@ -83,13 +84,25 @@ function viz(data) {
             onCameraChange(); //calls update for hours text locations  
         });
         //cam pos 
-        camera.position.set(73, 860, 170);
-        controls.target = new THREE.Vector3(85, 850, 350); //look at bypass on trackball 
+        camera.position.set(82, 853, 258);
+        controls.target = new THREE.Vector3(85, 855, 349); //look at bypass on trackball 
         camera.up = new THREE.Vector3(0, 1, 0);
-        
-        
+
+
+        //light + flare 
+        var light = new THREE.PointLight('red', 0, 100);
+        light.position.set(camera.position.x, camera.position.y, 1000)
+        var textureLoader = new THREE.TextureLoader();
+        var textureFlare = textureLoader.load("img/lf4.png");
+        var flareColor = new THREE.Color();
+        flareColor.setHSL(.58, 1, .2);
+        lensFlare = new THREE.LensFlare(textureFlare, 2000, 0, THREE.AdditiveBlending, flareColor);
+        lensFlare.position.copy(light.position);
+        scene.add(lensFlare);
+
+
         // AXIS 
-        axes = new THREE.AxisHelper(100);
+        // axes = new THREE.AxisHelper(10000);
         // scene.add(axes);
 
         //grid helper 
@@ -139,6 +152,7 @@ function viz(data) {
         requestAnimationFrame(animate);
         render();
         controls.update();
+        
     }
 
     function render() {

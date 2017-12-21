@@ -145,7 +145,7 @@ function makeLines(linesData) {
                 line.material.color.setHex(0x0071BC)
                 line.name = "User ID: " + index + " from France" + "<br>" + " stayed in a cluster for " + value.length + " hours";
             } else if (nation === 213) {
-                line.material.color.setHex(0xFFFFFF)
+                line.material.color.setHSL(0,0,.5)
                 line.name = "User ID: " + index + " from Andorra" + "<br>" + " stayed in a cluster for " + value.length + " hours";
             } else {
                 line.material.color.setHex(0xEC4269)
@@ -207,3 +207,4 @@ function toScreenPosition(obj, camera) {
         y: vector.y
     };
 }
+
