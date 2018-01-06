@@ -5,9 +5,37 @@ body {
     overflow: hidden;
 }
 
+h1 {
+    float: left;
+    top: 5%;
+    left: 5%;
+    width: 400px;
+    position: fixed;
+    font-family: "Roboto Condensed";
+    color: rgb(255, 255, 255);
+    background: none;
+    font-size: 40px;
+    z-index: 1000;
+}
+
+#text{
+    text-align: justify;
+    float: left;
+    left: 5%;
+    top: 25%; 
+    position: fixed;
+    width: 400px;
+    font-family: "Roboto Condensed";
+    font-weight: lighter;
+    color: rgb(255, 255, 255);
+    background: none;
+    font-size: 15px;
+    z-index: 1000;
+}
+
 #logo {
     top: 10%;
-    left: 3%;
+    left: 80%;
     position: fixed;
     z-index: 1000;
 }

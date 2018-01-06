@@ -24,6 +24,8 @@ var hrsTextHolder = new THREE.Group()
 var cube
 var lensFlare
 
+var textDiv
+
 
 ////////////////////////////
 /////////DATA from JSON/////
@@ -53,6 +55,10 @@ function parseJson() {
 /////////SETUP THREE.JS/////
 ////////////////////////////
 function viz(data) {
+    // get info div into var on start so we can toggle on/off using button 
+    textDiv = document.getElementById("text");
+
+
     init();
     animate();
 
@@ -84,8 +90,8 @@ function viz(data) {
             onCameraChange(); //calls update for hours text locations  
         });
         //cam pos 
-        camera.position.set(82, 853, 258);
-        controls.target = new THREE.Vector3(85, 855, 349); //look at bypass on trackball 
+        camera.position.set(126, 863, 179);
+        controls.target = new THREE.Vector3(109, 849, 368); //look at bypass on trackball 
         camera.up = new THREE.Vector3(0, 1, 0);
 
 
@@ -152,7 +158,7 @@ function viz(data) {
         requestAnimationFrame(animate);
         render();
         controls.update();
-        
+
     }
 
     function render() {
