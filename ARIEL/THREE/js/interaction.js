@@ -1,3 +1,4 @@
+
 ////////////BUTTON METHOD///////////////////
 function makeButton(btnDiv, btnTxt) {
     //  Create the button
@@ -42,6 +43,20 @@ animBtn.addEventListener("click", function () {
     }
 });
 
+//////////TEXT HIDE BUTTON/////////////////////////
+textBtn = makeButton("body", "Toggle Info")
+textBtn.style.top = "89%"; // locate button 
+textBtn.addEventListener("click", function () {
+    console.log(textDiv)
+    if (textDiv.style.display === "none") {
+        textBtn.innerHTML = "Hide Info";
+        textDiv.style.display = "block";
+    } else {
+        textBtn.innerHTML = "Show Info";
+        textDiv.style.display = "none";
+    }
+});
+
 ////////////////////////////
 /////EVENTS/////////////////
 ////////////////////////////
@@ -70,7 +85,7 @@ function onDocumentMouseDown(event) {
         if (inter.length > 0 && clickedArray.includes(inter[0].object.uuid) === false) {
             clickedArray.push(inter[0].object.uuid);
             curve = new THREE.CatmullRomCurve3(inter[0].object.geometry.vertices, 0);
-            tubeGeometry = new THREE.TubeGeometry(curve, 100,1 , inter[0].object.geometry.vertices.length, false)
+            tubeGeometry = new THREE.TubeGeometry(curve, 100, 1, inter[0].object.geometry.vertices.length, false)
             tubeMaterial = new THREE.MeshBasicMaterial({
                 color: inter[0].object.material.color,
                 transparent: true,
