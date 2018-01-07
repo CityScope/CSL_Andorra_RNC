@@ -60,6 +60,7 @@ function viz(data) {
     mapDiv = document.getElementById("map");
 
 
+
     init();
     animate();
 
@@ -138,7 +139,7 @@ function viz(data) {
             center: [1.529786, 42.508599],
             pitch: 60, // pitch in degrees
             bearing: -45, // bearing in degrees
-            zoom: 15
+            zoom: 13
         });
 
         ////////////////////////////
