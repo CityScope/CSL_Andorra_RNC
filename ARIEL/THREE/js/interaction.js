@@ -47,7 +47,6 @@ animBtn.addEventListener("click", function () {
 textBtn = makeButton("body", "Toggle Info")
 textBtn.style.top = "89%"; // locate button 
 textBtn.addEventListener("click", function () {
-    console.log(textDiv)
     if (textDiv.style.display === "none") {
         textBtn.innerHTML = "Hide Info";
         textDiv.style.display = "block";
@@ -57,10 +56,23 @@ textBtn.addEventListener("click", function () {
     }
 });
 
+//////////TEXT HIDE BUTTON/////////////////////////
+mapBtn = makeButton("body", "Toggle Map")
+mapBtn.style.top = "86%"; // locate button 
+mapBtn.addEventListener("click", function () {
+    if (mapDiv.style.display === "none") {
+        mapBtn.innerHTML = "Hide Map";
+        mapDiv.style.display = "block";
+    } else {
+        mapBtn.innerHTML = "Show Map";
+        mapDiv.style.display = "none";
+    }
+});
+
+
 ////////////////////////////
 /////EVENTS/////////////////
 ////////////////////////////
-
 function onDocumentMouseUp(event) {
     mousePressed = true;
 }

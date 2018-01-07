@@ -6,6 +6,9 @@
 // #304269 b/g
 // #EC4269 visitors 
 
+////////////////////////////
+/////////HANDLER///////////
+////////////////////////////
 function DataToGeometry(data, scene) {
     var rncData = data.dates["2016-08-20"].hours // to be fixed 
     var hrs = Object.keys(rncData).length;
@@ -145,7 +148,7 @@ function makeLines(linesData) {
                 line.material.color.setHex(0x0071BC)
                 line.name = "User ID: " + index + " from France" + "<br>" + " stayed in a cluster for " + value.length + " hours";
             } else if (nation === 213) {
-                line.material.color.setHSL(0,0,.5)
+                line.material.color.setHSL(0, 0, .5)
                 line.name = "User ID: " + index + " from Andorra" + "<br>" + " stayed in a cluster for " + value.length + " hours";
             } else {
                 line.material.color.setHex(0xEC4269)

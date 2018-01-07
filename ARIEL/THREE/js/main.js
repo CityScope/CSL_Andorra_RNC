@@ -57,6 +57,7 @@ function parseJson() {
 function viz(data) {
     // get info div into var on start so we can toggle on/off using button 
     textDiv = document.getElementById("text");
+    mapDiv = document.getElementById("map");
 
 
     init();
@@ -126,6 +127,19 @@ function viz(data) {
         HoursText();
 
 
+
+        ////////////////////////////
+        /////////MAPBOX/////////////
+        ////////////////////////////
+        mapboxgl.accessToken = 'pk.eyJ1IjoicmVsbm94IiwiYSI6ImNpa2VhdzN2bzAwM2t0b2x5bmZ0czF6MzgifQ.KtqxBH_3rkMaHCn_Pm3Pag';
+        var map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/relnox/cjc5bdcvv3rq02rpbaw86ox7g',
+            center: [1.529786, 42.508599],
+            pitch: 60, // pitch in degrees
+            bearing: -45, // bearing in degrees
+            zoom: 15
+        });
 
         ////////////////////////////
         ////CALL EVENTS METHODS/////
