@@ -17,15 +17,12 @@ var hoursData
 var axes
 var pastClicks = []
 var thisLine
-
 var hoursDiv
 var allhoursDiv = []
 var hrsTextHolder = new THREE.Group()
 var cube
 var lensFlare
-
 var textDiv
-
 
 ////////////////////////////
 /////////DATA from JSON/////
@@ -35,6 +32,7 @@ $(window).on("load", parseJson());
 prgsDiv = document.createElement('div');
 prgsDiv.setAttribute("id", "prgsDiv");
 document.body.appendChild(prgsDiv);
+
 
 
 function parseJson() {
@@ -59,10 +57,9 @@ function viz(data) {
     textDiv = document.getElementById("text");
     mapDiv = document.getElementById("map");
 
-
-
     init();
     animate();
+    mapDiv.style.display = "none"; // hide map on stratup 
 
     function init() {
         container = document.createElement("Div");

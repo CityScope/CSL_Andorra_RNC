@@ -56,7 +56,7 @@ textBtn.addEventListener("click", function () {
     }
 });
 
-//////////TEXT HIDE BUTTON/////////////////////////
+//////////MAP BUTTON/////////////////////////
 mapBtn = makeButton("body", "Toggle Map")
 mapBtn.style.top = "86%"; // locate button 
 mapBtn.addEventListener("click", function () {
@@ -68,6 +68,7 @@ mapBtn.addEventListener("click", function () {
         mapDiv.style.display = "none";
     }
 });
+
 
 
 ////////////////////////////
