@@ -1,0 +1,9 @@
+Select out the grid within Andorra La Vella Area
+
+GIS file:
+-boundary: la_vella_residential.shp
+-overlap_grid (intersect with or within boundary): la_vella_overlap_grid.shp
+-100% overlap_grid (100% within boundary): la_vella_overlap_grid_100perc.shp
+
+CSV file:
+- 100% overlap_grid ID: la_vella_overlap_grid_100_perc.csv

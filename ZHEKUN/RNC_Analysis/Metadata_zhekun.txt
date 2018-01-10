@@ -1,0 +1,39 @@
+METADATA:
+
+HASH_IMSI: International Mobile Subscriber Identity
+
+MCC: Mobile Country Code
+MNC: Mobile Network Code
+#a combination known as an "MCC/MNC tuple" is to uniquely identify a mobile network operator (carrier) using the GSM (including GSM-R), UMTS, and LTE public land mobile networks.
+
+Timestamp: 
+Longitude: GPS location
+Latitude: GPS location
+
+Ec/No: Energy per Chip of the Pilot Channel Over the Noise Power Density
+       Reflects how strong a signal is above the noise in a sell(sector) and measured in dB
+       (Also known as signal-to-noise ratio(SNR) per bit, the higher EcNo indicates a better channel)
+
+RSCP: Received Signal Code Power
+      Downlink power received by the UE receiver on the pilot channel and measured in dBm
+      (A higher RSCP indicates a better channel) 
+
+Static/Mobile
+
+Indoor/Outdoor
+
+HASH_IMEI: International Mobile Equipment Identity
+	   Identify related to the phone equipment
+
+IMEI_TAC: Type Allocation Code
+          Identify wireless devices, uniquely identify a model of phone
+
+
+Cellid: a generally unique number used to identify each base transceiver station or sector of a BTS within a location area code(LAC) if not within a GSM network
+
+LAC: Location Area Code
+
+DL UARFCN: UTRA Absolute Radio Frequency Channel Number is the channel number which represents the 5MHz carrier in UMTs
+
+
+

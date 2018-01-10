@@ -1,0 +1,342 @@
+id,name,lat,long
+7468,Hotel Xalet la Pastorella,42.535002,1.528212
+7470,Apartaments Moblats AdministraciÃ_ i GerÃ¨ncia Les Abelletes,42.538295,1.733278
+7472,Apartaments Moblats AgÃ¨ncia Pedrous,42.540192,1.733671
+7474,Apartaments Moblats AgÃ¨ncia Trekking S.T.,42.541222,1.731859
+7476,Apartaments Moblats AltÃ_ssim,42.541724,1.731437
+7478,Apartaments Moblats Crest,42.541887,1.730392
+7480,Apartaments Moblats Pas,42.541098,1.73135
+7486,Apartaments Moblats Els Avets,42.542743,1.73183
+7488,Apartaments Moblats Frontera Blanca II,42.538309,1.733273
+7492,Apartaments Moblats GrifÃ_ Vacances,42.538876,1.733246
+7494,Apartaments Moblats Hola Andorra,42.515063,1.531543
+7496,Apartaments Moblats Lauranna,42.550591,1.510919
+7498,Apartaments Moblats LCB,42.538661,1.733281
+7500,Apartaments Moblats Llorsa - La Solana,42.533819,1.588006
+7502,Apartaments Moblats Maragall,42.507394,1.530154
+7506,Apartaments Moblats Seturia,42.545367,1.474038
+7510,Apartaments Moblats Solaris,42.54141,1.730175
+7522,Apartaments TurÃ_stics Bonet,42.545646,1.475805
+7528,Apartaments TurÃ_stics Cristiania,42.556404,1.532705
+7112,Hotel Abba Suites Hotel,42.5333,1.51779
+7532,Apartaments TurÃ_stics del Meligar,42.53276,1.576858
+7114,Hotel Abba Xalet Suites,42.533162,1.517711
+7538,Apartaments TurÃ_stics Giberga,42.542987,1.523178
+7120,Hotel Exe PrÃ_ncep,42.507744,1.534205
+7540,Apartaments TurÃ_stics K2,42.541224,1.730886
+7122,Hotel Exe Prisma,42.50822,1.538606
+7124,Hotel Andorra Center,42.507682,1.520488
+7544,Apartaments TurÃ_stics La Neu II,42.600368,1.532173
+7126,Hotel Andorra Palace,42.508359,1.527255
+7548,Apartaments TurÃ_stics Manzano,42.540505,1.731354
+7550,Apartaments TurÃ_stics Mitxeu,42.598396,1.529734
+7128,Hotel Andorra Park Hotel,42.509442,1.523425
+7130,Hotel AnyÃ_s Park,42.532917,1.523835
+7554,Apartaments TurÃ_stics Prat de les Mines,42.600368,1.532951
+7132,Aparthotel Arans Ordino 3000,42.581081,1.519032
+7134,Hotel Arbre de Gel-ADG,42.534441,1.586793
+7136,Hotel Arinsal,42.573648,1.482994
+7560,Apartaments TurÃ_stics Sant Moritz,42.571747,1.484496
+7138,Hotel Art Hotel,42.507214,1.527408
+7562,Apartaments TurÃ_stics Sant RomÃ ,42.567222,1.489946
+7144,Hotel Babot,42.555038,1.540418
+7146,Hotel Barcelona,42.476113,1.490146
+7566,Apartaments TurÃ_stics VilarÃ_,42.593364,1.525726
+7148,Hotel BellpÃ_,42.503829,1.514091
+7568,Apartaments TurÃ_stics VilarÃ_ II,42.593249,1.526015
+7570,Aparthotel Alaska,42.5417,1.731425
+7152,Hotel BringuÃ©,42.618474,1.53895
+7572,Aparthotel Annapurna,42.566467,1.524021
+7154,Hotel El Pradet,42.618474,1.538944
+7574,Aparthotel AnyÃ_s Park,42.533041,1.5241
+7158,Hotel Cal Ruiz,42.543949,1.733222
+7576,Aparthotel Casa Vella,42.554614,1.532123
+7160,Hotel Camel.lot,42.54087,1.731046
+7578,Aparthotel CÃ_ndor,42.541524,1.732063
+7162,Hotel Camp del Serrat,42.517247,1.567755
+7580,Aparthotel Conseller,42.509857,1.546293
+7582,Aparthotel Cosmos,42.509768,1.541009
+7166,A Casa Canut Hotel GastronÃ_mic,42.50861,1.539888
+7584,Aparthotel el Pedral,42.534633,1.579864
+7586,Aparthotel el Serch,42.512206,1.535371
+7168,Hotel Casado,42.54222,1.732364
+7170,Hotel Cassany,42.50792,1.524836
+7172,Hotel Catalunya,42.541797,1.73334
+7590,Aparthotel Fijat,42.596282,1.526051
+7174,Hotel Celler d'en Toni,42.507082,1.531712
+7592,Aparthotel Fontverd,42.507433,1.530849
+7176,Hotel Central,42.542939,1.733785
+7178,Hotel CÃ©rvol,42.503042,1.513337
+7596,Aparthotel Iceberg,42.512873,1.534991
+7182,Hotel Cims,42.542356,1.734129
+7598,Aparthotel La Neu,42.59944,1.53166
+7600,Aparthotel Les Olimpiades,42.54054,1.73135
+7184,Hotel Coma,42.555887,1.535333
+7186,Hotel Coma Bella,42.446677,1.495046
+7604,Aparthotel l'Orri de Rusca,42.531644,1.573327
+7188,Hotel Comapedrosa,42.571949,1.483951
+7606,Hotel Patagonia Austral,42.577778,1.479011
+7190,Hotel Kyriad Comtes d'Urgell,42.510717,1.541189
+7192,Hotel Confort d'Envalira,42.559122,1.686382
+7608,Aparthotel PobladÃ_,42.573108,1.483739
+7194,Hotel Confort,42.542364,1.732289
+7610,Aparthotel Rialb,42.617607,1.538057
+7616,CÃ mping Borda d'Ansalonga,42.565198,1.525044
+7200,Hotel Cosmos,42.509768,1.541009
+7618,CÃ mping Casal,42.567015,1.603091
+7620,CÃ mping Internacional,42.533847,1.576583
+7202,Hotel Crest,42.577183,1.479646
+7622,CÃ mping Janramon,42.569188,1.605065
+7204,Hotel Cristina,42.54087,1.731046
+7626,CÃ mping Pla,42.566167,1.610184
+7206,Hotel de les Neus,42.543036,1.734139
+7628,CÃ mping Santa Creu,42.565412,1.600362
+7208,Hotel de les Pistes,42.541608,1.73199
+7630,CÃ mping Valira,42.50185,1.516155
+7210,Hotel de l'Isard,42.508026,1.525243
+7632,CÃ mping Xixerella,42.553041,1.488092
+7212,Hotel del Bisset,42.54249,1.522884
+7216,Hotel del Pui,42.547184,1.514869
+7220,Tulip Inn Andorra Delfos Hotel,42.508155,1.538545
+7644,PensiÃ_ Caliu d'en Josep,42.536445,1.582715
+7222,Hotel Diana Parc,42.573994,1.482189
+7646,PensiÃ_ els Escalls,42.513331,1.535503
+7648,PensiÃ_ Garcia,42.50549,1.516113
+7224,Hotel DiplomÃ tic,42.50527,1.527775
+7650,PensiÃ_ La Rosa,42.507277,1.520383
+7226,Hotel el Xalet,42.579534,1.649536
+7652,PensiÃ_ Roser,42.51188,1.534956
+7654,ResidÃ¨ncia Aldosa,42.543281,1.52278
+7230,Hotel Erts,42.561536,1.497363
+7658,ResidÃ¨ncia Benito,42.508549,1.53425
+7232,Hotel Espel,42.510253,1.533567
+7660,ResidÃ¨ncia Daina,42.565706,1.49068
+7234,Hotel Eureka,42.508655,1.539982
+7662,ResidÃ¨ncia Indalo,42.509891,1.53141
+7664,ResidÃ¨ncia Serveis d'Hoteleria Finet,42.580396,1.648791
+7666,ResidÃ¨ncia Serveis d'Hoteleria Finet 2,42.580396,1.648791
+7668,Alberg Borda Jovell,42.536362,1.516475
+7242,Hotel Festa Brava,42.508418,1.522494
+7670,Alberg la Comella,42.50029,1.528897
+7246,Hotel Folch,42.468136,1.493996
+7674,Natur Refugi Cortals de Sispony,42.526944,1.486389
+7676,Refugi Borda de Sorteny,42.622625,1.564135
+7250,Hotel Font d'Argent Pas de la Casa,42.541611,1.73198
+7678,Refugi Cabana de la Vall del Riu,42.595639,1.613198
+7680,Refugi Cabana de SiscarÃ_,42.595028,1.70597
+7254,Hotel GaspÃ ,42.550891,1.526034
+7682,Refugi de Cabana Sorda,42.611607,1.672414
+7256,Gran Hotel Font,42.547109,1.513616
+7684,Refugi de Claror,42.470144,1.563911
+7686,Refugi de Comaubaga,42.60677,1.550525
+7688,Refugi Comapedrosa,42.579029,1.449351
+7690,Refugi Cabana de CÃ_ms de Jan,42.618449,1.638779
+7264,Hotel Guineu,42.540675,1.731345
+7692,Refugi de Fontverd,42.492098,1.594511
+7694,Refugi de FrancolÃ_,42.489924,1.426265
+7266,Hotel Hesperia,42.508995,1.529004
+7696,Refugi de JuclÃ ,42.607382,1.715725
+7268,Hotel HimÃ laia Pas,42.540904,1.730934
+7698,Refugi de Cabana de la Portella,42.57202,1.720525
+7700,Refugi de l'Angonella,42.607964,1.496086
+7702,Refugi dels Agols,42.511109,1.608926
+7704,Refugi de les Fonts,42.590111,1.47893
+7706,Refugi de l'Illa,42.495007,1.656434
+7708,Refugi de MontmalÃºs,42.499198,1.68067
+7710,Refugi de Perafita,42.479718,1.578246
+7278,Hotel Mola Parc,42.511494,1.538708
+7712,Refugi de Prat Primer,42.478471,1.550277
+7714,Refugi de Rialb,42.640377,1.561245
+7280,Hotel Husa Xalet BesolÃ_,42.568504,1.489549
+7282,Hotel Husa Xalet VerdÃº,42.574732,1.48193
+7716,Refugi de Ribaescorjada,42.567645,1.641166
+7718,Refugi del Pla de les Pedres,42.553653,1.678862
+7284,Hotel Tropical,42.512878,1.551186
+7720,Refugi d'Ensagents,42.517032,1.642044
+7286,Hotel Jaume I,42.504471,1.514228
+7722,Refugi Pla de l'Estany,42.594046,1.460502
+7724,Refugi Riu dels Orris,42.485051,1.639777
+7288,Hotel Kandahar,42.541374,1.732171
+7726,Refugi Roca de Pimes,42.433707,1.53576
+7290,Hotel La Burna,42.535732,1.516121
+7728,Refugi de Collet MartÃ_,42.473056,1.468056
+13697,ResidÃ¨ncia Jaume I,42.504106,1.514329
+7292,Hotel La Cabana,42.552952,1.533135
+34437,Refugi Borda Les Reineres d'Incles,42.592642,1.670741
+7302,Hotel les 7 Claus,42.513871,1.533118
+38513,Apartaments Moblats Esquirol,42.566654,1.599458
+7304,Hotel Les Closes,42.508616,1.536852
+38541,Xalet A.M.P Grup,42.567534,1.602579
+7306,Hotel Les Fonts,42.50757,1.531045
+38550,Apartaments Pisos a Dies,42.507927,1.5211
+7310,Hotel les Truites,42.543173,1.734788
+38551,Apartaments TurÃ_stics La Neu,42.600066,1.532546
+7312,Hotel Llac Negre,42.544702,1.73121
+38574,Apartaments Moblats Neres Pas,42.542332,1.730789
+38575,Apartaments Moblats 3000,42.542367,1.731393
+38738,Apartaments Moblats EngaÃ¯t,42.543744,1.732116
+7316,Hotel MÃ gic Pas,42.542603,1.732152
+38739,Hotel Mirtil,42.541813,1.732986
+7318,Hotel MÃ gic La Massana,42.545659,1.51746
+38740,Hotel Antic,42.575691,1.519196
+7320,Hotel MÃ gic Andorra,42.509324,1.530297
+7322,Hotel MÃ gic Canillo,42.563421,1.601418
+38749,ResidÃ¨ncia Nuria,42.509146,1.541097
+7326,Hotel Marfany,42.508726,1.536756
+38750,Apartaments Moblats Dormir per Nits,42.51008,1.538786
+38751,PensiÃ_ Rossell,42.509066,1.543737
+7328,Hotel Mercure,42.507704,1.527663
+42676,Casa Rural de les Arnes,42.534968,1.576744
+7330,Hotel Meta,42.54289,1.732656
+42690,Borda del MollÃ ,42.533531,1.61051
+43092,Casa Mariola,42.564865,1.527369
+7332,Hotel MetrÃ_polis,42.510261,1.540948
+97169,Zona d'acampada Font de Ferrosins,42.592642,1.670741
+7338,Hotel MontanÃ©,42.572654,1.483896
+7342,Hotel Mu,42.573326,1.518329
+7344,Hotel Natur Marco Polo,42.543074,1.516682
+102801,Hotel Valmar,42.508443,1.532698
+102802,Aparthotel Sant Andreu,42.57595,1.481677
+102803,Apartaments Moblats Mont Blanc,42.547985,1.515387
+7348,Hotel Niunit,42.618507,1.538923
+102857,Apartaments TurÃ_stics Xixerella,42.553269,1.488508
+123295,Casa Rural Cal Batlle,42.576044,1.51867
+7352,Hotel Novotel,42.507661,1.527676
+126354,Hotel Eurostars Andorra Centre,42.50839,1.524709
+126356,Hotel Cubil,42.542561,1.731532
+7356,Hotel Ordino,42.555648,1.533525
+126358,Hotel Ferreira,42.542726,1.733938
+7358,Hotel Oriol,42.509165,1.539414
+126364,Borda Rural de Conangle,42.442182,1.501974
+7360,Hotel Oros,42.535216,1.585078
+126373,Alberg Naturlandia,42.441145,1.500569
+7362,Hotel Palarine,42.564499,1.492464
+126376,Xalet Carlemany,42.564396,1.493417
+7364,Hotel PalomÃ©,42.565,1.491278
+126379,PensiÃ_ Barri Antic,42.506883,1.52099
+7366,Hotel Panda,42.543489,1.733568
+126380,Apartaments moblats P&C Apartaments,42.51012,1.531959
+7368,Hotel Panorama,42.507858,1.54127
+126381,Apartaments moblats Rentseason,42.506916,1.531751
+7372,Hotel Parador de CanÃ_lich,42.474572,1.451803
+7376,Hotel Parma,42.543381,1.732741
+7378,Hotel Peralba,42.476112,1.48867
+126412,Apartaments turÃ_stics Can Font Bernat,42.534453,1.528751
+126413,Apartaments moblats Com Casa,42.532335,1.576569
+126414,Apartaments moblats M&P GestiÃ_ d'Apartaments,42.541906,1.730728
+7384,Hotel Petit Hotel,42.543327,1.731629
+126415,Apartaments moblats Ashome,42.564219,1.595661
+7386,Hotel Pic MaiÃ ,42.539902,1.720484
+126420,Apartaments moblats Casa Armengol,42.582452,1.518044
+7388,Hotel Pitiusa,42.508893,1.532869
+7390,Hotel Plaza,42.506852,1.532303
+7394,Hotel La Planada,42.553998,1.532082
+130976,Casa Rural Casa Vella Garibaldi,42.54539,1.474247
+130987,Hotel Continental,42.510914,1.541693
+7396,Hotel President,42.50318,1.513442
+130992,Apartaments l'Era d'Ayma,42.572883,1.483891
+7398,Hotel Princesa Parc,42.574086,1.481784
+130993,Apartaments Moblats Fercamp Vacances,42.571944,1.484003
+7400,Hotel PyrÃ©nÃ©es,42.507378,1.519777
+131000,Xalet A.M.P Grup IV,42.553059,1.487392
+131014,Apartaments moblats Grup A.M.P Promocions,42.568745,1.489491
+7404,Hotel Refugi dels Isards,42.543279,1.735089
+7406,Hotel Reial Pirineus (Palau AlpÃ_),42.542327,1.73088
+7410,Hotel Roc Blanc,42.509234,1.53945
+7412,Hotel Roc de Caldes,42.51064,1.546991
+7418,Hotel Rutllan,42.54739,1.513179
+7420,Hotel Sant Eloi,42.458047,1.487658
+7422,Hotel Sant Gothard,42.56465,1.491952
+7424,Hotel Sant Jordi,42.506358,1.518425
+7426,Hotel Sant Miquel,42.568399,1.52151
+7428,Hotel Santa BÃ rbara de la Vall d'Ordino,42.556876,1.533574
+7432,Hotel Siracusa,42.509055,1.54322
+7438,Hotel Sol-Park,42.462189,1.488795
+7440,Sport Hotel 4*,42.576056,1.669715
+7442,Sport Hotel Hermitage & Spa 5*,42.575556,1.671111
+7444,Sport Hotel Village 4*,42.576296,1.668515
+7446,Hotel Sporting,42.541787,1.733635
+7448,Hotel SucarÃ ,42.574127,1.518315
+7450,Hotel Termes Carlemany,42.50913,1.543418
+7452,Hotel TÃ_voli,42.50775,1.531814
+7454,Hotel Tudel,42.508679,1.539427
+7462,Hotel Solana Arinsal,42.571347,1.486049
+7464,Hotel Xalet BringuÃ©,42.6188,1.539327
+7238,Hotel Insitu Eurotel,42.51388,1.53308
+7300,Hotel l'Ermita,42.553845,1.590553
+7240,Golden Tulip Andorra FÃ¨nix Hotel,42.509507,1.539899
+7434,Hotel Ski Plaza,42.565599,1.598321
+7248,Hotel Font d'Argent Canillo,42.567309,1.600766
+7354,Hotel Obaga Blanca,42.562948,1.593688
+7150,Hotel Bonavida,42.566588,1.600154
+7416,Hotel Roc del Castell,42.5675,1.601269
+7588,Aparthotel Els Meners,42.570051,1.604887
+7602,Aparthotel Llempo,42.566302,1.598805
+7558,Apartaments TurÃ_stics Sant Bernat,42.565557,1.600045
+126395,Apartaments turÃ_stics Casa Nova Regi,42.56667,1.599775
+7556,Apartaments TurÃ_stics Roc del Castell,42.56698,1.601478
+7672,Casa de ColÃ_nies Aina,42.56969,1.605738
+7308,Hotel Les Terres,42.577538,1.627803
+102798,Apartaments Moblats Inter EsquÃ_,42.577619,1.628401
+102799,Hotel Ransol,42.580516,1.635429
+7430,Hotel Segle XX,42.581194,1.638347
+7542,Apartaments TurÃ_stics Ona Dorada El Tarter,42.581312,1.639125
+7314,Hotel Llop Gris,42.578106,1.648428
+7350,Hotel NÃ_rdic,42.578003,1.649802
+7214,Hotel del Clos,42.58029,1.649039
+7218,Hotel del Tarter,42.578301,1.649629
+7530,Apartaments TurÃ_stics del Clos,42.577785,1.650164
+7564,Apartaments TurÃ_stics Superior - El Tarter,42.578758,1.650743
+38748,Apartaments Moblats AgÃ¨ncia i Serveis Privats 2011,42.579599,1.650116
+130973,Apartaments moblats Finques Carolina,42.579529,1.65216
+126399,Apartaments moblats Fita Lloguer,42.579471,1.64952
+44894,Apartaments moblats PlaÃ§a,42.578678,1.650495
+38543,Apartaments Moblats Xalet SaÃ_c,42.580149,1.651174
+7508,Apartaments Moblats Solana de Ransol,42.581494,1.638969
+130971,Apartaments moblats Vacances d'Or,42.578841,1.629198
+126398,Apartaments moblats El Floc,42.580937,1.66086
+19493,Alberg Mountain Hostel Tarter,42.579106,1.653244
+7236,Hotel Euro EsquÃ_ E.T.,42.579095,1.657939
+7252,Hotel Galanthus,42.582393,1.66435
+7370,0Hotel Parador Canaro,42.579037,1.658769
+7458,Hotel Vall EsquÃ_,42.579994,1.659944
+7414,Hotel Roc de Sant Miquel,42.58097,1.664093
+7524,Apartaments TurÃ_stics Borda Canaro,42.57807,1.657726
+126421,Xalet turÃ_stic Terra del Cortal,42.58298,1.662793
+126401,Apartaments moblats Novell II,42.579365,1.658837
+126400,Apartaments moblats Sans Espais,42.580906,1.660849
+7516,Apartaments Moblats Vacances Pirinenca,42.579482,1.642529
+7270,Hotel HimÃ laia Soldeu,42.57669,1.667116
+7116,Hotel Piolets,42.577061,1.667051
+7118,Hotel Piolets Park & Spa,42.577625,1.664158
+7346,Hotel Naudi,42.576916,1.666111
+7382,Hotel Peretol,42.560493,1.682185
+7436,Hotel Soldeu Maistre,42.577371,1.665984
+7466,Hotel Xalet Montana,42.576948,1.666083
+7156,Hotel Bruxelles,42.576938,1.666255
+7594,Aparthotel Hort de Popaire,42.57758,1.665271
+7536,Apartaments TurÃ_stics Els Llacs,42.559522,1.685831
+102800,Apartaments TurÃ_stics GlaÃ§,42.561034,1.683794
+7552,Apartaments TurÃ_stics Pirineu,42.576592,1.668167
+7520,Apartaments TurÃ_stics Bonell,42.578038,1.666438
+7526,Apartaments TurÃ_stics Casa Vella Popaire,42.577671,1.665716
+38741,Apartaments Moblats Pleta de Soldeu Tal,42.579599,1.650116
+7512,Apartaments Moblats Soldeu ParadÃ_s EvasiÃ_,42.576857,1.667368
+7258,Hotel Grau Roig,42.5325,1.701111
+7262,Hotel Guillem,42.535639,1.5833
+7198,Hotel Coray,42.534999,1.584048
+7228,Hotel Encamp,42.531516,1.573177
+7336,Hotel MilÃ ,42.532694,1.587163
+7374,Hotel ParÃ_s,42.535897,1.581838
+7380,Hotel Pere d'Urg,42.534991,1.58025
+7456,Hotel Univers,42.53709,1.582498
+7614,Aparthotel Shusski,42.534995,1.587752
+7272,Hotel Holiday Inn,42.505658,1.519839
+7636,Hostal Cal Forner,42.507249,1.519394
+7334,Hotel Micolau,42.571914,1.484574
+7640,Hostal Palanques,42.545842,1.514407
+126396,Casa Rural Borda Patxeta,42.567283,1.584762
+7324,Hotel MÃ gic Ski,42.546939,1.513624
+7340,Hotel Montecarlo,42.532144,1.573975
+7274,Hotel CÃ¨ntric,42.508266,1.531144
+7276,Hotel Imperial,42.468741,1.492655
