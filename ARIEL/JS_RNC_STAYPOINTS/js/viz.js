@@ -79,7 +79,7 @@ function PeopleViz(data) {
 
                 //Sprites
                 var sprite = new THREE.Sprite(spriteMaterial);
-                sprite.scale.set(3, 3, 3); // imageWidth, imageHeight
+                sprite.scale.set(4, 4, 4); // imageWidth, imageHeight
                 sprite.position.set(p.x, p.y, p.z);
                 sprite.name = value.S[se].s + "," + value.S[se].l + "," + key
                 //material
@@ -111,11 +111,13 @@ function PeopleViz(data) {
             });
             var line = new THREE.Line(geometry, material);
             line.material.color = sprite.material.color;
+            // line.name = sprite.material.color;
         }
         lineGroup.add(line)
     }
     scene.add(spriteGroup);
     scene.add(lineGroup);
+    console.log(lineGroup)
     // animPeople();
 }
 

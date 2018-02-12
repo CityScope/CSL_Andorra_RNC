@@ -12,6 +12,10 @@ var mouseX = 0,
 var SCREEN_WIDTH = window.innerWidth;
 var SCREEN_HEIGHT = window.innerHeight;
 
+//DATA
+var data = null;
+var dataSorted = null;
+
 ////VIZ  VARS ////////////
 var conModelPosition = new THREE.Vector3;
 var lineGroup
@@ -92,11 +96,9 @@ function lonCor(lon) {
     return lon;
 }
 
-
 ////////////////////////////////////////////////////////////////
 /////////DATA from JSON/////////////////////////////////////////
 ////////////////////////////////////////////////////////////////
-
 
 /////////parser /////////////
 
@@ -104,10 +106,18 @@ $(window).on("load", parseJson());
 
 function parseJson() {
     $.getJSON('data/all.json', function (data) {
-        console.log("loaded page")
+        console.log("loaded page and data from json")
         ThreeJS(data);
+
+        function dataSort(a, b) {
+            return a.S[0].s - b.S[0].s;
+        }
+        dataSorted = Object.values(data).sort(dataSort);
+        console.log(new Date(dataSorted[100].S[0].s * 1000))
+
     })
 }
+
 
 /////////SETUP THREE.JS/////
 function ThreeJS(data) {
@@ -160,8 +170,8 @@ function ThreeJS(data) {
         window.addEventListener('resize', onWindowResize, false);
 
         //CALLThreeJS METHODS
-        conModel(data)
-        // PeopleViz(data);
+        // conModel(data)
+        PeopleViz(data);
     }
 
     function animate() {
