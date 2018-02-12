@@ -94,7 +94,6 @@ function conModel(data) {
             scene.add(object);
             conModelPosition.copy(object.position); //for camera rotation around object 
             camera.lookAt(conModelPosition);
-
         },
         // called when loading is in progresses
         function (xhr) {
