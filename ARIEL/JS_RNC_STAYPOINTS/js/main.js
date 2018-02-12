@@ -105,7 +105,7 @@ $(window).on("load", parseJson());
 function parseJson() {
     $.getJSON('data/all.json', function (data) {
         console.log("loaded page")
-        // ThreeJS(data);
+        ThreeJS(data);
     })
 }
 

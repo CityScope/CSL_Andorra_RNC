@@ -1,5 +1,55 @@
+////CONTEXT MODEL/////////////
+function conModel(data) {
+
+    console.log("Loading Model")
+    var prgsDiv = document.createElement('div');
+    prgsDiv.setAttribute("id", "prgsDiv");
+    document.body.appendChild(prgsDiv);
+
+    var loader = new THREE.ObjectLoader();
+    loader.load(
+        // resource URL
+        'model/Andorra.json',
+        // called when resource is loaded
+        function (object) {
+            object.scale.set(120, 120, 120)
+            object.position.set(0, 0, 0)
+            object.position.add(getPntOnLine(pul, plr, 0.5, false))
+            let rotAng = Math.atan2(pul.z - pur.z, pul.x - pur.x);
+            console.log(rotAng)
+            object.rotation.y = -rotAng;
+            scene.add(object);
+            conModelPosition.copy(object.position); //for camera rotation around object 
+            camera.lookAt(conModelPosition);
+        },
+        // called when loading is in progresses
+        function (xhr) {
+            percentComplete = xhr.loaded / xhr.total * 100;
+            console.log(Math.round(percentComplete, 2) + '% downloaded');
+            if (Math.round(percentComplete, 2) < 99) {
+                prgsDiv.innerHTML = Math.round(percentComplete, 2) + '%'
+            } else {
+                prgsDiv.innerHTML = null;
+            }
+            if (percentComplete >= 100) {
+                console.log("Calling PPL VIZ")
+
+                PeopleViz(data);
+            }
+        },
+        // called when loading has errors
+        function (error) {
+            console.log('An error happened');
+        }
+    );
+}
+
+
 /////////PEOPLE VIZ////////
 function PeopleViz(data) {
+
+    console.log("Visulaizing stays")
+
     //data vars
     var keys = Object.keys(data);
     var len = keys.length;
@@ -69,50 +119,6 @@ function PeopleViz(data) {
     scene.add(spriteGroup);
     scene.add(lineGroup);
     // animPeople();
-}
-
-////CONTEXT MODEL/////////////
-function conModel(data) {
-
-    var prgsDiv = document.createElement('div');
-    prgsDiv.setAttribute("id", "prgsDiv");
-    document.body.appendChild(prgsDiv);
-
-
-    var loader = new THREE.ObjectLoader();
-    loader.load(
-        // resource URL
-        'model/Andorra.json',
-        // called when resource is loaded
-        function (object) {
-            object.scale.set(120, 120, 120)
-            object.position.set(0, 0, 0)
-            object.position.add(getPntOnLine(pul, plr, 0.5, false))
-            let rotAng = Math.atan2(pul.z - pur.z, pul.x - pur.x);
-            console.log(rotAng)
-            object.rotation.y = -rotAng;
-            scene.add(object);
-            conModelPosition.copy(object.position); //for camera rotation around object 
-            camera.lookAt(conModelPosition);
-        },
-        // called when loading is in progresses
-        function (xhr) {
-            percentComplete = xhr.loaded / xhr.total * 100;
-            console.log(Math.round(percentComplete, 2) + '% downloaded');
-            if (Math.round(percentComplete, 2) < 99) {
-                prgsDiv.innerHTML = Math.round(percentComplete, 2) + '%'
-            } else {
-                prgsDiv.innerHTML = null;
-            }
-            if (percentComplete >= 100) {
-                PeopleViz(data);
-            }
-        },
-        // called when loading has errors
-        function (error) {
-            console.log('An error happened');
-        }
-    );
 }
 
 /////////MOVE AGENTS////////
