@@ -131,10 +131,10 @@ function ThreeJS(data) {
         // camera
         if (camera === undefined) {
             camera = new THREE.PerspectiveCamera(70, SCREEN_WIDTH / SCREEN_HEIGHT, 1, 10000);
-            camera.position.set(0, 200, 0);
+            camera.position.set(500, 1000, 500);
         }
-        controls = new THREE.OrbitControls(camera);
 
+        controls = new THREE.OrbitControls(camera);
 
         //light 
         var light = new THREE.PointLight(0xF26101, .5, 10000);
@@ -160,8 +160,8 @@ function ThreeJS(data) {
         window.addEventListener('resize', onWindowResize, false);
 
         //CALLThreeJS METHODS
-        // conModel(data)
-        PeopleViz(data);
+        conModel(data)
+        // PeopleViz(data);
     }
 
     function animate() {
