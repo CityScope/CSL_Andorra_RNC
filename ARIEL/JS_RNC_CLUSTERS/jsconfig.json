@@ -1,0 +1,8 @@
+{
+  "typeAcquisition": {
+    "include": [
+      "three",
+      "underscore"
+    ]
+  }
+}
