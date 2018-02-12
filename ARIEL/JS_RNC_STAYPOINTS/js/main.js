@@ -159,8 +159,8 @@ function ThreeJS(data) {
         window.addEventListener('resize', onWindowResize, false);
 
         //CALLThreeJS METHODS
-        conModel(data)
-        // PeopleViz(data);
+        // conModel(data)
+        PeopleViz(data);
     }
 
     function animate() {

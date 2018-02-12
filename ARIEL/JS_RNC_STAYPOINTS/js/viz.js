@@ -20,7 +20,8 @@ function PeopleViz(data) {
         geometry = new THREE.Geometry();
         key = keys[i];
         value = data[key];
-        if (value.N != "Andorra") { //remove andorrans
+        //remove andorrans
+        if (value.N != "Andorra") {
             //se - stay events 
             for (let se = 0; se < Object.keys(value.S).length; se++) {
                 let p = new THREE.Vector3();
@@ -56,7 +57,6 @@ function PeopleViz(data) {
                 /////////LINES//////////////
                 geometry.vertices.push(new THREE.Vector3(p.x, p.y, p.z));
                 geometry.vertices.push(new THREE.Vector3(p.x, p.y + value.S[se].l / 60, p.z));
-
             }
             var material = new THREE.LineBasicMaterial({
                 color: color,
@@ -73,6 +73,11 @@ function PeopleViz(data) {
 
 ////CONTEXT MODEL/////////////
 function conModel(data) {
+
+    var prgsDiv = document.createElement('div');
+    prgsDiv.setAttribute("id", "prgsDiv");
+    document.body.appendChild(prgsDiv);
+
 
     var loader = new THREE.ObjectLoader();
     loader.load(
@@ -95,7 +100,11 @@ function conModel(data) {
         function (xhr) {
             percentComplete = xhr.loaded / xhr.total * 100;
             console.log(Math.round(percentComplete, 2) + '% downloaded');
-
+            if (Math.round(percentComplete, 2) < 99) {
+                prgsDiv.innerHTML = Math.round(percentComplete, 2) + '%'
+            } else {
+                prgsDiv.innerHTML = null;
+            }
             if (percentComplete >= 100) {
                 PeopleViz(data);
             }
