@@ -22,20 +22,17 @@ function conModel(data) {
             scene.add(object);
             conModelPosition.copy(object.position); //for camera rotation around object 
             camera.lookAt(conModelPosition);
+            console.log("Calling PPL VIZ")
+            PeopleViz(data);
         },
         // called when loading is in progresses
         function (xhr) {
             percentComplete = xhr.loaded / xhr.total * 100;
             console.log(Math.round(percentComplete, 2) + '% downloaded');
-            if (Math.round(percentComplete, 2) < 99) {
+            if (Math.round(percentComplete, 2) <= 99) {
                 prgsDiv.innerHTML = Math.round(percentComplete, 2) + '%'
             } else {
                 prgsDiv.innerHTML = null;
-            }
-            if (percentComplete >= 100) {
-                console.log("Calling PPL VIZ")
-
-                PeopleViz(data);
             }
         },
         // called when loading has errors
