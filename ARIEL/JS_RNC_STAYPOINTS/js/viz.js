@@ -2,6 +2,7 @@
 function conModel(data) {
 
     console.log("Loading Model")
+
     var prgsDiv = document.createElement('div');
     prgsDiv.setAttribute("id", "prgsDiv");
     document.body.appendChild(prgsDiv);
