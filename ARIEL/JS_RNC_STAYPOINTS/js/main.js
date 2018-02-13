@@ -39,11 +39,11 @@ var pur = corToPnt(ur);
 var plr = corToPnt(lr);
 var pll = corToPnt(ll);
 
-////////////////////////////////////////////////////////////////
-//////////HELPERS   FUNCTIONS/////////////////////////////////
-////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////
+//////////HELPERS FUNCTIONS/////////////////////////////
+/////////////////////////////////////////////////////////
 
-// converts object with lat lon to THREE vector3 
+// converts object with lat lon to THREE vector3
 function corToPnt(cor) {
     corPnt = new THREE.Vector3(latCor(cor[0]), 0, lonCor(cor[1]));
     return corPnt;
@@ -96,9 +96,9 @@ function lonCor(lon) {
     return lon;
 }
 
-////////////////////////////////////////////////////////////////
-/////////DATA from JSON/////////////////////////////////////////
-////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////
+/////////DATA from JSON//////////////////////////////
+/////////////////////////////////////////////////////
 
 /////////parser /////////////
 
@@ -107,20 +107,27 @@ $(window).on("load", parseJson());
 function parseJson() {
     $.getJSON('data/all.json', function (data) {
         console.log("loaded page and data from json")
-        ThreeJS(data);
+
 
         function dataSort(a, b) {
             return a.S[0].s - b.S[0].s;
         }
         dataSorted = Object.values(data).sort(dataSort);
-        console.log(new Date(dataSorted[100].S[0].s * 1000))
+        // console.log(new Date(dataSorted[100].S[0].s * 1000))
+        //CALLThreeJS METHODS
+        ThreeJS();
+        conModel();
+        // animPeople(dataSorted);
 
     })
 }
 
+function afterJSON(data) {
+
+}
 
 /////////SETUP THREE.JS/////
-function ThreeJS(data) {
+function ThreeJS() {
     // get info div into var on start so we can toggle on/off using button 
 
     init();
@@ -168,10 +175,6 @@ function ThreeJS(data) {
 
         //CALL EVENTS METHODS
         window.addEventListener('resize', onWindowResize, false);
-
-        //CALLThreeJS METHODS
-        // conModel(data)
-        PeopleViz(data);
     }
 
     function animate() {

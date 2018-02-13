@@ -1,8 +1,7 @@
 ////CONTEXT MODEL/////////////
-function conModel(data) {
+function conModel() {
 
     console.log("Loading Model")
-
     var prgsDiv = document.createElement('div');
     prgsDiv.setAttribute("id", "prgsDiv");
     document.body.appendChild(prgsDiv);
@@ -22,8 +21,11 @@ function conModel(data) {
             scene.add(object);
             conModelPosition.copy(object.position); //for camera rotation around object 
             camera.lookAt(conModelPosition);
-            console.log("Calling PPL VIZ")
-            PeopleViz(data);
+            //
+            console.log("Model loading is done -- Calling 'stay' viz")
+            PeopleViz(dataSorted);
+            // animPeople(dataSorted);
+
         },
         // called when loading is in progresses
         function (xhr) {
@@ -42,18 +44,14 @@ function conModel(data) {
     );
 }
 
-
 /////////PEOPLE VIZ////////
 function PeopleViz(data) {
-
     console.log("Visulaizing stays")
-
     //data vars
     var keys = Object.keys(data);
     var len = keys.length;
     var key;
     var value;
-
     // sprite vars
     spriteGroup = new THREE.Object3D();
     var linesData = [];
@@ -100,6 +98,7 @@ function PeopleViz(data) {
                     sprite.material.color.setHex(colors.visitors)
                 }
                 //add to group of sprites 
+                sprite.name = value.N;
                 spriteGroup.add(sprite);
 
                 /////////LINES//////////////
@@ -111,38 +110,33 @@ function PeopleViz(data) {
             });
             var line = new THREE.Line(geometry, material);
             line.material.color = sprite.material.color;
-            // line.name = sprite.material.color;
+            line.name = value.N;
         }
-        lineGroup.add(line)
+        if (line instanceof THREE.Object3D) { // fix non THREE elements 
+            lineGroup.add(line)
+        }
     }
     scene.add(spriteGroup);
     scene.add(lineGroup);
-    console.log(lineGroup)
-    // animPeople();
 }
 
 /////////MOVE AGENTS////////
-function animPeople() {
-    function sortY(a, b) {
-        return a.geometry.vertices[0].y - b.geometry.vertices[0].y;
-    }
-    linesSortedByY = lineGroup.children.sort(sortY);
-
-    for (let i = 0; i < linesSortedByY.length; i++) {
-        let p = linesSortedByY[i].geometry.vertices[0];
+function animPeople(data) {
+    console.log(data)
+    for (let i = 0; i < data.length; i++) {
+        let p = data[i].S[0];
         var geometry = new THREE.BoxGeometry(10, 10, 10);
         var material = new THREE.MeshBasicMaterial({
             color: 0x00ff00
         });
         var cube = new THREE.Mesh(geometry, material);
-        cube.position.set(p.x, p.y, p.z);
+        cube.position.set(latCor(p.la), (p.s - 1475193600) / 60, lonCor(p.lo));
         scene.add(cube)
-        for (let ver = 0; ver < linesSortedByY[i].geometry.vertices.length; ver++) {
-            var tween = new TWEEN.Tween(cube.position).to({
-                x: linesSortedByY[i].geometry.vertices[ver].x,
-                y: linesSortedByY[i].geometry.vertices[ver].y,
-                z: linesSortedByY[i].geometry.vertices[ver].z
-            }, 1000).start();
-        }
+        // var tween = new TWEEN.Tween(cube.position).to({
+        //     x: .geometry.vertices[ver].x,
+        //     y: .geometry.vertices[ver].y,
+        //     z: .geometry.vertices[ver].z
+        // }, 1000).start();
     }
+
 }
