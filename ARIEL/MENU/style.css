@@ -32,6 +32,18 @@ h6 {
     background-color: #00000079;
 }
 
+.logo {
+    max-width: 70px;
+    top: 20%;
+    left: 10%;
+    position: fixed;
+    z-index: 100;
+}
+
 .row {
-    padding: 5rem;
+    padding: 7rem;
+}
+
+.navi-bg {
+    background-color: rgba(0, 0, 0, 0.5);
 }
