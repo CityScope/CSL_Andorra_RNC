@@ -1,8 +1,230 @@
-<a href="stay.html" target="_blank">
-    RNC_STAYPOINTS</a>
-<br>
-<a href="clusters.html" target="_blank">
-    RNC_CLUSTERS</a>
-<br>
-<a href="t/t.html" target="_blank">
-    test</a>
+<html>
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="RNC">
+    <meta name="author" content="Ariel Noyman">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+
+    <title>RNC data analysis | Andorra</title>
+</head>
+
+<body>
+
+    <div class="row">
+        <div class="col-7 centered">
+            <br>
+            <br>
+            <h1>
+                Reversed Urbanism
+            </h1>
+            <br>
+            <h3>
+                Predicting Urban Performance Through Behavioral Patterns in Temporal Telecom Data
+            </h3>
+            <br>
+            <p>
+                <small>
+                    Ariel Noyman, Ronan Doorley, Zhekun Xiong, Luis Alonso, Arnaud Grignard, Kent Larson
+                    <br> Massachusetts Institute of Technology, 77 Massachusetts Ave, Cambridge, MA 02139, USA
+                    <br>
+                    <br> noyman [at] mit [dot] edu
+                </small>
+            </p>
+            <br>
+            <br>
+            <br>
+            <p>
+                Urban environments are inherently temporal: they contain static artifacts (buildings, roads, public or open spaces) that
+                are staged to support dynamic activities (movements, traffic, commerce or stay). For centuries, planners,
+                developers and governments were investigating these relationships in an attempt to improve the design and
+                performance of successful urban spaces [Krier, 1979].
+            </p>
+            <p>
+                Nevertheless, more empirical analysis of users&rsquo; engagement with urban environments has always been challenging: [Gehl,
+                2013, &Ccedil;olak, et al. 2015] Lack of data and scarcity of tools left room for unproven assessments, sometimes
+                leading to poor decision-making. But recent advancements in data and machine learning carry a promise to
+                potentially reverse this approach: instead of looking at the form to infer behavior, can we look at behavior
+                and potentially suggest urban form?
+            </p>
+            <p>
+                This study explores a novel method to analyze diverse behavioral patterns in large urban population and to associate them
+                with discrete urban features. Through such coupling, this work aims to suggest correlations between human
+                dynamics and the characteristics of urban places: Which city form has greater potential to attract large,
+                heterogeneous and diverse crowds? What amenities, services and urban features produce highly active urban
+                places? And what keeps us staying at a specific street corner for several minutes or hours? - Even if some
+                of these inquiries could be roughly addressed through traditional methods, a city-scale, discrete and evidence
+                based correlation between urban features and human dynamics has yet to be fully explored [Ratti, 2006].
+            </p>
+            <h3>
+                Novel Methods for Urban Analysis Through Telecom Data
+            </h3>
+            <p>
+                Utilizing telecom data for spatial analysis has been widely researched and practiced. In the past few decades, the advent
+                of Location Based Services [LBS] has sparked the interests of urbanists who wished to sense the &lsquo;beating
+                pulse&rsquo; of the city and allowed them near real-time comprehension of urban dynamics [Becker, 2011, Gkatziaki
+                et al., 2017].
+            </p>
+            <p>
+                Yet in many cases, low data resolution or limited accuracy forced researchers to generalize behavioral patterns over large
+                tracts of the city. At the same time, measuring highly-accurate behaviors was mostly available through participatory
+                processes or by using specialized equipment; These limitations bounded discrete spatial analysis to confined
+                and small portions of the city [Reades, 2007].
+            </p>
+            <p>
+                However, higher spatial and temporal resolution data can be obtained through signal strengths aggregation from multiple cell-towers
+                and by using geolocation techniques such as Received Signal Strength and triangulation [Steenbruggen, 2013].
+                This study also provides a comparative analysis of temporal data sources in the context of urban planning
+                and suggest potential coupling of various sources to achieve large scale, near-GPS accuracy.
+                <br>
+                <br>
+            </p>
+            <h3>
+                Machine Learning the Urban Form: Case study Andorra
+                <br>
+            </h3>
+            <p>
+                As a case study, this work examines the country of Andorra (EU) with a focus on its major urban areas. A European tourist
+                city-state, Andorra is now undergoing changes to its visitors&rsquo; population as well a wave of new urban
+                development. The country features diverse population of locals, visitors and tourists which is challenging
+                to survey using traditional methods. The purpose of the described method is to correlate locals and visitors&rsquo;
+                dynamics to a set of discrete urban features describing Andorra's cityscape and eventually aid in understanding
+                and designing highly-performing urban interventions.
+            </p>
+            <p>
+                This method involves dividing Andorra&rsquo;s study area into microscopic, regularly spaced cells and computing two sets
+                of metrics:
+            </p>
+            <p>
+                (A) Human Dynamics: a measure of urban performance is generated based on a set of timestamped geolocated cellphone traces
+                associated with individuals. This is achieved by segmenting the data into discrete time periods, finding
+                &lsquo;staypoints&rsquo; [Li et al., 2008] and identifying spatial clusters within each time period [Ester
+                et al., 1996]. The occurrence of specific clusters [dense, heterogeneous, persistent and stationary] is considered
+                as an indication of higher social activity and interaction.
+            </p>
+            <p>
+                (B) Urban Features: Diverse set of urban features are then defined and computed for each grid cell. Machine Learning algorithms
+                (such as Random Forest) which model the occurrence of clusters as a function of these features are then trained
+                on the city&rsquo;s grid-cells. All through this process, the accuracy of this model is tested against unbiased
+                random grid cells.
+            </p>
+            <p>
+                Finally, the most prevailing urban features in correlation to the presence of clusters are extracted using this model. Of
+                these, the presence of open space, impact of amenities, the degree of built-up area and the highest
+                <em>
+                    betweenness
+                </em>
+                centrality of the road network nodes appeared to largely dominate. Additional models have been developed to explain other
+                cluster characteristics such as diversity and persistence. These will be reported on in the full paper.
+
+            </p>
+            <h3>
+                References
+            </h3>
+
+            <small>
+                <p>
+                    Krier, Rob. Urban space (Stadtraum). London: Academy Editions, 1979. Pp.15-20
+                </p>
+                <p>
+                    Ratti, C., Frenchman, D., Pulselli, R. M., &amp; Williams, S. (2006). Mobile Landscapes: Using Location Data from Cell Phones
+                    for Urban Analysis. Environment and Planning B: Planning and Design, 33(5), 744. doi:10.1068/b32047.
+                </p>
+                <p>
+                    Gehl, J., Svarre, B., &amp; Steenhard, K. A. (2013). How to study public life. Washington: Island Press. pp.29-33
+                </p>
+                <p>
+                    &Ccedil;olak, S., Alexander, L. P., Alvim, B. G., Mehndiratta, S. R., &amp; Gonz&aacute;lez, M. C. (2015). Analyzing cell
+                    phone location data for urban travel: current methods, limitations, and opportunities.
+                    <em>
+                        Transportation Research Record: Journal of the Transportation Research Board
+                    </em>
+                    , (2526), Pp.126-135.
+                </p>
+                <p>
+                    Becker, R. A., Caceres, R., Hanson, K., Loh, J. M., Urbanek, S., Varshavsky, A., &amp; Volinsky, C. (2011). A Tale of One
+                    City: Using Cellular Network Data for Urban Planning. IEEE Pervasive Computing, 10(4), 18-26. doi:10.1109/mprv.2011.44
+                </p>
+                <p>
+                    Gkatziaki, V., Giatsoglou, M., Chatzakou, D., &amp; Vakali, A. (2017). DynamiCITY: Revealing city dynamics from citizens
+                    social media broadcasts.
+                    <em>
+                        Information Systems
+                    </em>
+                    ,
+                    <em>
+                        71
+                    </em>
+                    , Pp.90-102.
+                </p>
+                <p>
+                    Reades, J., Calabrese, F., Sevtsuk, A., &amp; Ratti, C. (2007). Cellular Census: Explorations in Urban Data Collection. IEEE
+                    Pervasive Computing, 6(3), 37. doi:10.1109/mprv.2007.53
+                </p>
+                <p>
+                    Batty, M., 2013. The new science of cities. MIT Press.
+                </p>
+                <p>
+                    Steenbruggen, J., Borzacchiello, M.T., Nijkamp, P. and Scholten, H., 2013. Mobile phone data from GSM networks for traffic
+                    parameter and urban spatial pattern assessment: a review of applications and opportunities. GeoJournal,
+                    78(2), pp.223-243.
+                </p>
+                <p>
+                    Li, Q., Zheng, Y., Xie, X., Chen, Y., Liu, W. and Ma, W.Y., 2008, November. Mining user similarity based on location history.
+                    In Proceedings of the 16th ACM SIGSPATIAL international conference on Advances in geographic information
+                    systems (p. 34). ACM.
+                </p>
+                <p>
+                    Ester, M., Kriegel, H.P., Sander, J. and Xu, X., 1996, August. A density-based algorithm for discovering clusters in large
+                    spatial databases with noise. In Kdd (Vol. 96, No. 34, pp. 226-231).
+                </p>
+            </small>
+            <br>
+            <br>
+            <br>
+
+        </div>
+    </div>
+
+
+    <nav class="navbar fixed-bottom navbar-expand-sm navbar-dark bg-dark">
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">RNC Analysis
+                        <span class="sr-only">(current)
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" target="_blank" href="ARIEL/JS_RNC_STAYPOINTS/stay.html">Stay Points</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" target="_blank" href="ARIEL/JS_RNC_CLUSTERS/clusters.html">Clustering</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <link href="ARIEL/MENU/style.css" rel="stylesheet">
+
+</body>
+
+</html>
