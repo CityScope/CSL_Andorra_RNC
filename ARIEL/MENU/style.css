@@ -11,8 +11,12 @@ body {
     font-family: "Roboto Condensed";
     color: rgba(255, 255, 255, 1);
     font-weight: 100;
-    text-align: justify;
-    height: 100%;
+}
+
+.modalText,
+.modalText,
+.modalText {
+    color: rgb(0, 0, 0);
 }
 
 h1,
@@ -34,7 +38,7 @@ h6 {
 
 .logo {
     max-width: 60px;
-    top: 10%;
+    top: 85%;
     left: 2%;
     position: fixed;
     z-index: 5000;
