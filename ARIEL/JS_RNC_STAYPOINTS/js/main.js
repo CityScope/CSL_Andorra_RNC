@@ -116,8 +116,8 @@ function parseJson() {
         // console.log(new Date(dataSorted[100].S[0].s * 1000))
         //CALLThreeJS METHODS
         ThreeJS();
-        // conModel();            
-        // PeopleViz(dataSorted);
+        conModel();
+        PeopleViz(dataSorted);
         animPeople(dataSorted);
 
     })
