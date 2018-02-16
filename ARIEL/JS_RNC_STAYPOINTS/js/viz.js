@@ -1,5 +1,5 @@
 /////////PEOPLE VIZ////////
-function PeopleViz(data) {
+function StaticPplViz(data) {
     console.log("Visulaizing stays")
     //data vars
     var keys = Object.keys(data);
@@ -7,12 +7,12 @@ function PeopleViz(data) {
     var key;
     var value;
     // sprite vars
-    spriteGroup = new THREE.Object3D();
+    StaticPplGrp = new THREE.Object3D();
     var linesData = [];
     var particleTexture = new THREE.TextureLoader().load("img/lf3.png");
 
     //line vars
-    lineGroup = new THREE.Object3D();
+    StaticLnGrp = new THREE.Object3D();
     let color = new THREE.Color();
     var geometry;
 
@@ -44,7 +44,7 @@ function PeopleViz(data) {
 
                 //add to group of sprites 
                 sprite.name = value.N;
-                spriteGroup.add(sprite);
+                StaticPplGrp.add(sprite);
 
                 /////////LINES//////////////
                 geometry.vertices.push(new THREE.Vector3(p.x, p.y, p.z));
@@ -58,9 +58,12 @@ function PeopleViz(data) {
             line.name = value.N;
         }
         if (line instanceof THREE.Object3D) { // fix non THREE elements 
-            lineGroup.add(line)
+            StaticLnGrp.add(line)
         }
     }
-    scene.add(spriteGroup);
-    scene.add(lineGroup);
+    scene.add(StaticPplGrp);
+    scene.add(StaticLnGrp);
+    //hide the groups for GUI
+    StaticLnGrp.visible = false;
+    StaticPplGrp.visible = false;
 }

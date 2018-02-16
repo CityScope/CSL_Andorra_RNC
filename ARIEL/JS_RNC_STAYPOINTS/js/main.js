@@ -17,9 +17,7 @@ var data = null;
 var dataSorted = null;
 
 ////VIZ  VARS ////////////
-var conModelPosition = new THREE.Vector3;
-var lineGroup
-var spriteGroup
+var StaticLnGrp, StaticPplGrp
 var colors = {
     spain: 0xF26101,
     andorra: 0xFFFFFF,
@@ -29,6 +27,7 @@ var colors = {
 };
 
 var camLookAt = new THREE.Vector3(65, 0, 300); //center of adorra models
+var stopSpinBool = true;
 
 ////GEO LOC VARS////////////
 var ul = [42.505086, 1.509961];
@@ -113,6 +112,24 @@ function colorByNation(nation) {
     return color;
 }
 
+function camSpin() {
+    controls.enabled = false;
+    timer = Date.now() * params.rotSpeed;
+    camera.position.x = camLookAt.x + Math.sin(timer) * 300;
+    camera.position.y = 200;
+
+    camera.position.z = camLookAt.z + Math.cos(timer) * 300;
+    camera.lookAt(camLookAt); //center of adorra model s
+
+
+    if (!stopSpinBool) {
+        controls.enabled = true;
+        return;
+    }
+    requestId = requestAnimationFrame(camSpin);
+}
+
+
 //////////////////////////////////////////////////////
 /////////DATA from JSON//////////////////////////////
 /////////////////////////////////////////////////////
@@ -134,8 +151,8 @@ function parseJson() {
         //CALLThreeJS METHODS
         ThreeJS();
         conModel();
-        // PeopleViz(dataSorted);
         animPeople(dataSorted);
+        StaticPplViz(dataSorted);
 
     })
 }
@@ -198,7 +215,7 @@ function ThreeJS() {
 
         //CALL EVENTS METHODS
         window.addEventListener('resize', onWindowResize, false);
-
+        camSpin();
     }
 
     function animate() {

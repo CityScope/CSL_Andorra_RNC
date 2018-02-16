@@ -20,7 +20,7 @@ function conModel() {
             scene.add(andorraModel);
             //
             console.log("Model loading is done -- Calling 'stay' viz")
-            // PeopleViz(dataSorted);
+            // StaticPplViz(dataSorted);
 
         },
         // called when loading is in progresses
