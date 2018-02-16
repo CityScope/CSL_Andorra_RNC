@@ -28,6 +28,8 @@ var colors = {
     visitors: 0xEC4269
 };
 
+var camLookAt = new THREE.Vector3(65, 0, 300); //center of adorra models
+
 ////GEO LOC VARS////////////
 var ul = [42.505086, 1.509961];
 var ur = [42.517066, 1.544024];
@@ -47,6 +49,18 @@ var pll = corToPnt(ll);
 function corToPnt(cor) {
     corPnt = new THREE.Vector3(latCor(cor[0]), 0, lonCor(cor[1]));
     return corPnt;
+}
+
+// converts lat to THREEjs close to axis points
+function latCor(lat) {
+    lat = 100 * ((100 * (lat)) - 4250);
+    return lat;
+}
+
+// converts lon to THREEjs close to axis points 
+function lonCor(lon) {
+    lon = 100 * ((lon * 100) - 150);
+    return lon;
 }
 
 // Draws lines to show extents of Andorra cropped model
@@ -84,16 +98,19 @@ function getPntOnLine(pointA, pointB, percentage, boolViz) {
     return pntOnLine;
 }
 
-// converts lat to THREEjs close to axis points
-function latCor(lat) {
-    lat = 100 * ((100 * (lat)) - 4250);
-    return lat;
-}
-
-// converts lon to THREEjs close to axis points 
-function lonCor(lon) {
-    lon = 100 * ((lon * 100) - 150);
-    return lon;
+//returns obj color by nation 
+function colorByNation(nation) {
+    let color = null;
+    if (nation === "Spain") {
+        color = colors.spain;
+    } else if (nation === "France") {
+        color = colors.france;
+    } else if (nation === "Andorra") {
+        color = colors.andorra;
+    } else {
+        color = colors.visitors;
+    }
+    return color;
 }
 
 //////////////////////////////////////////////////////
@@ -149,10 +166,11 @@ function ThreeJS() {
         // camera
         if (camera === undefined) {
             camera = new THREE.PerspectiveCamera(70, SCREEN_WIDTH / SCREEN_HEIGHT, 1, 10000);
-            camera.position.set(500, 1000, 500);
+            camera.position.set(100, 100, 0);
         }
-
         controls = new THREE.OrbitControls(camera);
+
+        controls.target.set(65, 0, 300); //center of andorra models
 
         //light 
         var light = new THREE.PointLight(0xF26101, .5, 10000);
@@ -180,6 +198,7 @@ function ThreeJS() {
 
         //CALL EVENTS METHODS
         window.addEventListener('resize', onWindowResize, false);
+
     }
 
     function animate() {

@@ -30,9 +30,10 @@ gui.add(params, 'nation', ['All', 'FR', 'SP', 'Others']);
 function camSpin() {
     controls.enabled = false;
     timer = Date.now() * params.rotSpeed;
-    camera.position.x = conModelPosition.x + Math.sin(timer) * 500;
-    camera.position.z = conModelPosition.z + Math.cos(timer) * 500;
-    camera.lookAt(conModelPosition);
+    camera.position.x = camLookAt.x + Math.sin(timer) * 300;
+    camera.position.z = camLookAt.z + Math.cos(timer) * 300;
+    camera.lookAt(camLookAt); //center of adorra model s
+
 
     if (stopSpinBool) {
         controls.enabled = true;

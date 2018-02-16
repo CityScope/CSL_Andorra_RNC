@@ -1,49 +1,3 @@
-////CONTEXT MODEL/////////////
-function conModel() {
-
-    console.log("Loading Model")
-    var prgsDiv = document.createElement('div');
-    prgsDiv.setAttribute("id", "prgsDiv");
-    document.body.appendChild(prgsDiv);
-
-    var loader = new THREE.ObjectLoader();
-    loader.load(
-        // resource URL
-        'model/Andorra.json',
-        // called when resource is loaded
-        function (object) {
-            object.scale.set(120, 120, 120)
-            object.position.set(0, 0, 0)
-            object.position.add(getPntOnLine(pul, plr, 0.5, false))
-            let rotAng = Math.atan2(pul.z - pur.z, pul.x - pur.x);
-            console.log(rotAng)
-            object.rotation.y = -rotAng;
-            scene.add(object);
-            conModelPosition.copy(object.position); //for camera rotation around object 
-            camera.lookAt(conModelPosition);
-            //
-            console.log("Model loading is done -- Calling 'stay' viz")
-            PeopleViz(dataSorted);
-            // animPeople(dataSorted);
-
-        },
-        // called when loading is in progresses
-        function (xhr) {
-            percentComplete = xhr.loaded / xhr.total * 100;
-            console.log(Math.round(percentComplete, 2) + '% downloaded');
-            if (Math.round(percentComplete, 2) <= 99) {
-                prgsDiv.innerHTML = Math.round(percentComplete, 2) + '%'
-            } else {
-                prgsDiv.innerHTML = null;
-            }
-        },
-        // called when loading has errors
-        function (error) {
-            console.log('An error happened');
-        }
-    );
-}
-
 /////////PEOPLE VIZ////////
 function PeopleViz(data) {
     console.log("Visulaizing stays")
@@ -86,17 +40,8 @@ function PeopleViz(data) {
                     transparent: true
                 });
                 sprite.material.blending = THREE.AdditiveBlending; // "glowing" particles
+                sprite.material.color.setHex(colorByNation(value.N))
 
-                if (value.N === "Spain") {
-                    sprite.material.color.setHex(colors.spain)
-                } else if (value.N === "France") {
-                    sprite.material.color.setHex(colors.france)
-                } else if (value.N === "Andorra") {
-                    sprite.material.color.setHex(colors.andorra)
-                    sprite.scale.set(1, 1, 1); // imageWidth, imageHeight
-                } else {
-                    sprite.material.color.setHex(colors.visitors)
-                }
                 //add to group of sprites 
                 sprite.name = value.N;
                 spriteGroup.add(sprite);
@@ -118,38 +63,4 @@ function PeopleViz(data) {
     }
     scene.add(spriteGroup);
     scene.add(lineGroup);
-}
-
-/////////MOVE AGENTS////////
-function animPeople(data) {
-    // console.log(data)
-    // for (let i = 0; i < data.length; i++) {
-
-    var i = 0;
-    tStart = 0;
-    a();
-
-    function a() {
-        let p = data[i].S[0];
-        tStart = p.s;
-        if (data[i].N != "Andorra") {
-            var geometry = new THREE.BoxGeometry(10, 10, 10);
-            var material = new THREE.MeshBasicMaterial({
-                color: 'yellow'
-            });
-            var cube = new THREE.Mesh(geometry, material);
-            cube.position.set(latCor(p.la), (p.s - 1475193600) / 60, lonCor(p.lo));
-
-            scene.add(cube)
-        }
-        if (i++ < data.length) {
-            setTimeout(a, (p.s - 1475193600) / 1000); //wrong  -- this should be from alst point 
-        }
-
-        // var tween = new TWEEN.Tween(cube.position).to({
-        //     x: .geometry.vertices[ver].x,
-        //     y: .geometry.vertices[ver].y,
-        //     z: .geometry.vertices[ver].z
-        // }, 1000).start();
-    }
 }
