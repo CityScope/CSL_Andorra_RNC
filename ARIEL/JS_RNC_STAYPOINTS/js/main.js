@@ -117,7 +117,7 @@ function parseJson() {
         //CALLThreeJS METHODS
         ThreeJS();
         conModel();
-        PeopleViz(dataSorted);
+        // PeopleViz(dataSorted);
         animPeople(dataSorted);
 
     })

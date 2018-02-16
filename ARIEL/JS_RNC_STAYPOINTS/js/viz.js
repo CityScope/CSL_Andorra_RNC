@@ -133,9 +133,9 @@ function animPeople(data) {
         let p = data[i].S[0];
         tStart = p.s;
         if (data[i].N != "Andorra") {
-            var geometry = new THREE.BoxGeometry(5, 5, 5);
+            var geometry = new THREE.BoxGeometry(10, 10, 10);
             var material = new THREE.MeshBasicMaterial({
-                color: 'red'
+                color: 'yellow'
             });
             var cube = new THREE.Mesh(geometry, material);
             cube.position.set(latCor(p.la), (p.s - 1475193600) / 60, lonCor(p.lo));
