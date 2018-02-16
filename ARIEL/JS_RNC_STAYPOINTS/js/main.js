@@ -116,8 +116,9 @@ function parseJson() {
         // console.log(new Date(dataSorted[100].S[0].s * 1000))
         //CALLThreeJS METHODS
         ThreeJS();
-        conModel();
-        // animPeople(dataSorted);
+        // conModel();            
+        // PeopleViz(dataSorted);
+        animPeople(dataSorted);
 
     })
 }
@@ -166,10 +167,14 @@ function ThreeJS() {
         axes = new THREE.AxisHelper(10000);
         // scene.add(axes);
         //grid helper 
-        var gridHelper = new THREE.GridHelper(10000, 100, 'white', 0x4f4f4f);
-        gridHelper.position.y = 0;
-        gridHelper.position.x = 0;
-        // scene.add(gridHelper);
+
+        for (let t = 0; t < 24; t++) {
+            var gridHelper = new THREE.GridHelper(10000, 2, 'white', colors.background);
+            gridHelper.position.y = t * 60;
+            gridHelper.position.x = 0;
+            // scene.add(gridHelper);
+        }
+
         //FOG
         scene.fog = new THREE.Fog(0x01070E, 1, 3000);
 

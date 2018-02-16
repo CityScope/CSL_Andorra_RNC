@@ -8,7 +8,7 @@ var gui = new dat.GUI({
 var params = {
     animCamBool: false,
     rotSpeed: 0.0001,
-    lines: false,
+    lines: true,
     nation: 'All'
 };
 

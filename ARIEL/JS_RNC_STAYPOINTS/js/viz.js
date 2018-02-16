@@ -122,21 +122,34 @@ function PeopleViz(data) {
 
 /////////MOVE AGENTS////////
 function animPeople(data) {
-    console.log(data)
-    for (let i = 0; i < data.length; i++) {
+    // console.log(data)
+    // for (let i = 0; i < data.length; i++) {
+
+    var i = 0;
+    tStart = 0;
+    a();
+
+    function a() {
         let p = data[i].S[0];
-        var geometry = new THREE.BoxGeometry(10, 10, 10);
-        var material = new THREE.MeshBasicMaterial({
-            color: 0x00ff00
-        });
-        var cube = new THREE.Mesh(geometry, material);
-        cube.position.set(latCor(p.la), (p.s - 1475193600) / 60, lonCor(p.lo));
-        scene.add(cube)
+        tStart = p.s;
+        if (data[i].N != "Andorra") {
+            var geometry = new THREE.BoxGeometry(5, 5, 5);
+            var material = new THREE.MeshBasicMaterial({
+                color: 'red'
+            });
+            var cube = new THREE.Mesh(geometry, material);
+            cube.position.set(latCor(p.la), (p.s - 1475193600) / 60, lonCor(p.lo));
+
+            scene.add(cube)
+        }
+        if (i++ < data.length) {
+            setTimeout(a, (p.s - 1475193600) / 1000); //wrong  -- this should be from alst point 
+        }
+
         // var tween = new TWEEN.Tween(cube.position).to({
         //     x: .geometry.vertices[ver].x,
         //     y: .geometry.vertices[ver].y,
         //     z: .geometry.vertices[ver].z
         // }, 1000).start();
     }
-
 }
