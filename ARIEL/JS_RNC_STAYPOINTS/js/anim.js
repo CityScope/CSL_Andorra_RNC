@@ -45,45 +45,59 @@ function animPeople(data) {
 	};
 
 	//data managmemnt 
-	clonedData = JSON.parse(JSON.stringify(data)) // clone the original data obj
-	clonedData = nest(clonedData, ['S[0].s']);
+	/////////////////////////////////////////////////
+	// clone the original data obj and sort 
+	// into a group of 
+	// people with the same start time 
+	clonedData = nest(data, ['S[0].s'])
 
+	//THREE static vars 
 	var pplGrp = new THREE.Object3D();
 	var pplTexture = new THREE.TextureLoader().load("img/lf4.png");
 
+	//connter 
+	let j = 0;
+
+	// go through each epoch sec in a day //epochDay 
+	for (let i = dataDate; i < dataDate + 10; i++) {
+		//the start time of the first object in the group 
+		let st = Object.values(clonedData)[j][0].S[0].s;
+		// if this time is also the start time for a group of people's stay 
+		// AND counter is smaller than cloneData array 
+		if (st = i && j <= Object.values(clonedData).length) {
+			let grp = Object.values(clonedData)[j];
+
+			console.log(grp, i);
+			for (let person = 0; person < grp.length; person++) {
 
 
-	for (let i = dataDate; i < dataDate + epochDay; i++) {
-		let stZero = Object.values(clonedData)[0][0].S[0].s;	//gets the stats time of the first object in a group of people with the same start time 
+				var spriteMaterial = new THREE.SpriteMaterial({
+					map: pplTexture,
+					transparent: true
+				});
+				var pplSprite = new THREE.Sprite(spriteMaterial);
 
-		if (clonedData[0][0].S[0].s = i) {
-			let p = clonedData[0];
-			console.log(p);
-
-			var spriteMaterial = new THREE.SpriteMaterial({
-				map: pplTexture,
-				transparent: true
-			});
-			var pplSprite = new THREE.Sprite(spriteMaterial);
-			pplSprite.material.color.setHex(colorByNation(clonedData[0].N));
-			pplSprite.material.blending = THREE.AdditiveBlending;
-			pplSprite.position.set(latCor(p[0].la),
-				// (p[0].s - dataDate) / 60,
-				0,
-				lonCor(p[0].lo));
-			if (clonedData[0].N != "Andorra") {
-				pplSprite.scale.set(5, 5, 5);
-			} else {
-				pplSprite.scale.set(1, 1, 1);
+				pplSprite.material.color.setHex(colorByNation(grp[person][0].N));
+				pplSprite.material.blending = THREE.AdditiveBlending;
+				pplSprite.position.set(latCor(p[0].la),
+					// (p[0].s - dataDate) / 60,
+					0,
+					lonCor(p[0].lo));
+				if (clonedData[0].N != "Andorra") {
+					pplSprite.scale.set(5, 5, 5);
+				} else {
+					pplSprite.scale.set(1, 1, 1);
+				}
+				animateThisStay(pplSprite, clonedData[0].S);
+				scene.add(pplSprite);
 			}
-			anim(pplSprite, clonedData[0].S);
-			clonedData.splice(0, 1);
-			scene.add(pplSprite);
+			// setp forward the array 
+			j = j + 1;
 		}
 	}
 }
 
-function anim(obj, stayEvent) {
+function animateThisStay(obj, stayEvent) {
 	for (let e = 0; e < Object.keys(stayEvent).length; e++) {
 		var tween = new TWEEN.Tween(obj.position).to({
 			x: latCor(stayEvent[e].la),
