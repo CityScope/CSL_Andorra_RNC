@@ -19,8 +19,7 @@ function conModel() {
             andorraModel.rotation.y = -rotAng;
             scene.add(andorraModel);
             //
-            console.log("Model loading is done -- Calling 'stay' viz")
-            // StaticPplViz(dataSorted);
+            console.log("Model loading is done")
 
         },
         // called when loading is in progresses
