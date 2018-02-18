@@ -11,24 +11,23 @@ function animPeople(data) {
 		});
 	};
 
-	//data managmemnt 
 	/////////////////////////////////////////////////
-	// clone the original data obj and sort 
+	//data managmemnt 
+
+	// clone the original data obj and sort it
 	// into a group of people with the same start time 
 	// the start time of the first object in the group 
-	// if this time is also the start time for a group of people's stay AND counter is smaller than cloneData array 
+	// if this time is also the start time for a group of 
+	// people's stay AND counter is smaller than cloneData array 
 
 	groupedData = Object.values(groupIt(data, ['S[0].s']))
 	GroupTimes = Object.keys(groupIt(data, ['S[0].s']))
-	console.log(GroupTimes, groupedData)
+
 	//THREE static vars 
 	var pplGrp = new THREE.Object3D();
 	var pplTexture = new THREE.TextureLoader().load("img/lf4.png");
 
-
 	var timeDiv = document.getElementById("timeDiv");
-
-
 
 	for (var j = 0; j <= groupedData.length; j++) {
 		(function (i) {
@@ -36,7 +35,7 @@ function animPeople(data) {
 				drawGrp(i)
 				timeDiv.innerHTML = new Date((dataDate + i) * 1000)
 
-			}, (1 * i));
+			}, (100 * i));
 		})(j);
 	}
 	function drawGrp(i) {
@@ -58,18 +57,23 @@ function animPeople(data) {
 			} else {
 				pplSprite.scale.set(1, 1, 1);
 			}
+
+			//pass stay events of person and it's visual rep. to anim method
+			animateThisStay(pplSprite, Object.values(grp[person].S))
 			scene.add(pplSprite);
 		}
 	}
 }
 
-function animateThisStay(obj, stayEvent) {
-	for (let e = 0; e < Object.keys(stayEvent).length; e++) {
+function animateThisStay(obj, personStayEvents) {
+
+	for (let e = 0; e < personStayEvents.length; e++) {
+
 		var tween = new TWEEN.Tween(obj.position).to({
-			x: latCor(stayEvent[e].la),
-			// y: (stayEvent[e].l + stayEvent[e].s) / 60,
+			x: latCor(personStayEvents[e].la),
+			// y: (personStayEvents[e].l) / 600,
 			y: 0,
-			z: lonCor(stayEvent[e].lo)
-		}, stayEvent[e].l).start();
+			z: lonCor(personStayEvents[e].lo)
+		}, personStayEvents[e].l).start();
 	}
 }
