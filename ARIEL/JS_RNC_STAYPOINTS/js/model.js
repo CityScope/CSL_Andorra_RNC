@@ -20,6 +20,8 @@ function conModel() {
             scene.add(andorraModel);
             //
             console.log("Model loading is done")
+            animPeople(dataSorted);
+            StaticPplViz(dataSorted);
 
         },
         // called when loading is in progresses

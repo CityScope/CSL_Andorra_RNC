@@ -151,9 +151,7 @@ function parseJson() {
 		dataSorted = Object.values(data).sort(dataSort);
 		//CALLThreeJS METHODS
 		ThreeJS();
-		animPeople(dataSorted);
-		// StaticPplViz(dataSorted);
-		// conModel();
+		conModel();
 	});
 }
 
