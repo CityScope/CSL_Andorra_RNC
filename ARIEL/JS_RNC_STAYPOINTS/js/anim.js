@@ -59,9 +59,13 @@ function animPeople(data) {
 			}
 
 			//pass stay events of person and it's visual rep. to anim method
-			animateThisStay(pplSprite, Object.values(grp[person].S))
-			scene.add(pplSprite);
+			animateThisStay(pplSprite, Object.values(grp[person].S));
+
+			pplSprite.name =
+				"From " + (grp[person].N) + "  and stayed " +
+				Object.values(grp[person].S).length + " times"
 		}
+		scene.add(pplSprite);
 	}
 }
 
@@ -76,4 +80,26 @@ function animateThisStay(obj, personStayEvents) {
 			z: lonCor(personStayEvents[e].lo)
 		}, personStayEvents[e].l).start();
 	}
+}
+
+function raycastPersonDetails() {
+	let tDiv = document.getElementById("timeDiv");
+
+	raycaster.setFromCamera(mouse, camera);
+
+	intersections = raycaster.intersectObjects(scene.children);
+	intersection = (intersections.length) > 0 ? intersections[0] : null;
+	if (intersection) {
+		// document.body.style.cursor = 'none';
+		tDiv.innerHTML = intersection.object.name;
+		tweenThis(intersection.object.scale);
+	}
+}
+
+function tweenThis(objScale) {
+	let tween = new TWEEN.Tween(objScale).to({
+		x: 10,
+		y: 10,
+		z: 10
+	}, 250).start();
 }

@@ -6,8 +6,14 @@ var controls;
 var camera;
 var axes;
 //
+// MOUSE AND RAYCAST
+var mouse = new THREE.Vector2();
 var mouseX = 0,
 	mouseY = 0;
+var raycaster = new THREE.Raycaster();
+var threshold = 0.1;
+raycaster.params.Points.threshold = threshold;
+
 //
 var SCREEN_WIDTH = window.innerWidth;
 var SCREEN_HEIGHT = window.innerHeight;
@@ -152,6 +158,7 @@ function parseJson() {
 		//CALLThreeJS METHODS
 		ThreeJS();
 		conModel();
+		// animPeople(data);
 	});
 }
 
@@ -220,10 +227,11 @@ function ThreeJS() {
 	}
 
 	function render() {
+		//raycast
+		raycastPersonDetails();
 		TWEEN.update();
 		renderer.render(scene, camera);
 	}
-
 }
 
 /////WINDOW RESIZE//////////
@@ -234,8 +242,18 @@ function onWindowResize(event) {
 	camera.updateProjectionMatrix();
 	renderer.setSize(window.innerWidth, window.innerHeight);
 }
-////CAMERA ////////
+// ////MOUSE ////////
+// function onDocumentMouseMove(event) {
+// 	mouseX = (event.clientX - windowHalfX) / 2;
+// 	mouseY = (event.clientY - windowHalfY) / 2;
+// }
+
 function onDocumentMouseMove(event) {
-	mouseX = (event.clientX - windowHalfX) / 2;
-	mouseY = (event.clientY - windowHalfY) / 2;
+	event.preventDefault();
+	mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+	mouse.y = - (event.clientY / window.innerHeight) * 2 + 1;
+	document.body.style.cursor = 'default';
+
 }
+
+document.addEventListener('mousemove', onDocumentMouseMove, false);
