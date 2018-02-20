@@ -64,8 +64,10 @@ function animPeople(data) {
 			pplSprite.name =
 				"From " + (grp[person].N) + "  and stayed " +
 				Object.values(grp[person].S).length + " times"
+
+			scene.add(pplSprite);
+
 		}
-		scene.add(pplSprite);
 	}
 }
 
