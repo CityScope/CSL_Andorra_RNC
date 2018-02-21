@@ -25,7 +25,9 @@ var dataDate = 1475193600;
 var epochDay = 86400;
 
 ////VIZ  VARS ////////////
-var StaticLnGrp, StaticPplGrp;
+// var StaticLnGrp, StaticPplGrp;
+var pplLinesGrp = new THREE.Object3D();
+
 var colors = {
 	spain: 0xF26101,
 	andorra: 0xFFFFFF,
@@ -150,7 +152,6 @@ function parseJson() {
 	$.getJSON("data/all.json", function (data) {
 		console.log("loaded page and data from json");
 
-
 		function dataSort(a, b) {
 			return a.S[0].s - b.S[0].s;
 		}
@@ -158,7 +159,7 @@ function parseJson() {
 		//CALLThreeJS METHODS
 		ThreeJS();
 		conModel();
-		// animPeople(data);
+		animPeople(data);
 	});
 }
 

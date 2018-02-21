@@ -15,19 +15,21 @@ function animPeople(data) {
 
 	// clone the original data obj and sort it
 	// into a group of people with the same start time 
-	groupedData = Object.values(groupIt(data, ['S[0].s']))
+	var groupedData = Object.values(groupIt(data, ['S[0].s']))
 
 	// the start time of the first object in the group 
 	// if this time is also the start time for a group of 
 	// people's stay
-	GroupTimes = Object.keys(groupIt(data, ['S[0].s']))
+	var GroupTimes = Object.keys(groupIt(data, ['S[0].s']))
+
 	//THREE static vars 
 	var pplGrp = new THREE.Object3D();
 	var pplTexture = new THREE.TextureLoader().load("img/lf4.png");
 
+	// Div text 
 	var timeDiv = document.getElementById("timeDiv");
 
-	//delay method for spawning groups 
+	//delay loop for spawning ppl groups 
 	for (var j = 0; j <= groupedData.length; j++) {
 		(function (i) {
 			setTimeout(function () {
@@ -56,69 +58,84 @@ function animPeople(data) {
 				pplSprite.material.transparent = true;
 				pplSprite.scale.set(5, 5, 5);
 
-				//location of each object
-				pplSprite.position.set(latCor(grp[person].S[0].la),
-					// (grp[person].S[0].s - dataDate) / 600,
-					0,
-					lonCor(grp[person].S[0].lo));
+				//location of first known pnt of this peron in this gorup  // (grp[person].S[0].s - dataDate) / 600,
+				pplSprite.position.set(latCor(grp[person].S[0].la), 0, lonCor(grp[person].S[0].lo));
+
+				// lower opacity for andorra 
 				if (grp[person].N != "Andorra") {
 					pplSprite.material.opacity = 1;
-
 				} else {
 					pplSprite.material.opacity = 0.25;
 				}
-
-				//pass stay events of person and it's visual rep. to anim method
-				animateThisStay(pplSprite, Object.values(grp[person].S));
 
 				// add name for text div to read from 
 				pplSprite.name =
 					"From " + (grp[person].N) + "  and stayed " +
 					Object.values(grp[person].S).length + " times."
+
+				let pLine = drawLine(grp[person], pplSprite, pplSprite.material.opacity);
+				pplLinesGrp.add(pLine);
+
+				//add this person to scene 
 				scene.add(pplSprite);
+
+				//pass stay events of person and it's visual rep. to anim method
+				animStays(pplSprite, Object.values(grp[person].S));
 			}
 		}
 	}
+	scene.add(pplLinesGrp);
+	pplLinesGrp.visible = false;
 }
 
-function animateThisStay(obj, personStayEvents) {
-	if (personStayEvents.length > 1) {
-		for (let e = 0; e < personStayEvents.length; e++) {
+
+function drawLine(person, personSptire, opacity) {
+	//line vars
+	person = Object.values(person.S);
+	var color = new THREE.Color();
+	var geometry = new THREE.Geometry();
+	var personStayLine = null;
+
+	//itiirate through person's stay events
+	for (let i = 0; i < person.length; i++) {
+
+		let p = new THREE.Vector3();
+		p.x = latCor(person[i].la);
+		p.y = (person[i].s - dataDate) / 600; //start time for stay event as Y axis 
+		// p.y = 0
+		p.z = lonCor(person[i].lo);
+
+		//push vertices 
+		geometry.vertices.push(new THREE.Vector3(p.x, p.y, p.z));
+		//push the  'stay' time as vertical Y axis 
+		geometry.vertices.push(new THREE.Vector3(p.x, p.y + person[i].l / 600, p.z));
+	}
+	var material = new THREE.LineBasicMaterial({
+		color: personSptire.material.color,
+	});
+	personStayLine = new THREE.Line(geometry, material);
+	personStayLine.name = personSptire.uuid;
+	personStayLine.material.transparent = true;
+	personStayLine.material.opacity = opacity;
+	personStayLine.visible = false;
+	return personStayLine;
+}
+
+function animStays(obj, personStayEvents) {
+	if (personStayEvents.length > 0) {
+		for (let i = 0; i < personStayEvents.length; i++) {
 			var tween = new TWEEN.Tween(obj.position).to({
-				x: latCor(personStayEvents[e].la),
-				// y: (personStayEvents[e].l) / 600,
-				y: 0,
-				z: lonCor(personStayEvents[e].lo)
-			}, personStayEvents[e].l / 10).start();
+				x: latCor(personStayEvents[i].la),
+				y: (personStayEvents[i].l) / 600,
+				// y: 0,
+				z: lonCor(personStayEvents[i].lo)
+			}, personStayEvents[i].l).start();
 		}
-	} else {
-		var tween = new TWEEN.Tween(obj.position).to({
-			x: latCor(personStayEvents[0].la),
-			y: (personStayEvents[0].l) / 600,
-			// y: 0,
-			z: lonCor(personStayEvents[0].lo)
-		}, personStayEvents[0].l).start();
-
 	}
 }
 
-
-// Raycast shows details and anim of user 
-function raycastPersonDetails() {
-	let tDiv = document.getElementById("timeDiv");
-	//set raytrecer 
-	raycaster.setFromCamera(mouse, camera);
-	//find interactions 
-	intersections = raycaster.intersectObjects(scene.children);
-	intersection = (intersections.length) > 0 ? intersections[0] : null;
-	if (intersection) {
-		// document.body.style.cursor = 'none';
-		tDiv.innerHTML = intersection.object.name;
-		tweenThis(intersection.object);
-	}
-}
-
-function tweenThis(obj) {
+//Tween the selceted person
+function animatePersonSelection(obj) {
 	let preScale = new THREE.Vector3(3, 3, 3)
 	let postScale = new THREE.Vector3(15, 15, 15);
 	let tweenA = new TWEEN.Tween(obj.scale)
@@ -127,4 +144,26 @@ function tweenThis(obj) {
 		.to(preScale, 1000);
 
 	tweenA.chain(tweenBack).start();
+}
+
+// Raycast shows details and anim of user 
+function raycastPersonDetails() {
+	//set raytrecer 
+	raycaster.setFromCamera(mouse, camera);
+	//find interactions 
+	intersections = raycaster.intersectObjects(scene.children);
+	intersection = (intersections.length) > 0 ? intersections[0] : null;
+
+	if (intersection && intersection.object.type == 'Sprite') {
+		// document.body.style.cursor = 'none';
+		let tDiv = document.getElementById("timeDiv");
+		tDiv.innerHTML = intersection.object.name;
+		animatePersonSelection(intersection.object);
+
+		if (pplLinesGrp.visible
+			&& scene.getObjectByName(intersection.object.uuid)
+			&& scene.getObjectByName(intersection.object.uuid).type == 'Line') {
+			scene.getObjectByName(intersection.object.uuid).visible = true;
+		}
+	}
 }

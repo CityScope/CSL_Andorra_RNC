@@ -8,7 +8,6 @@ function StaticPplViz(data) {
 	var value;
 	// sprite vars
 	StaticPplGrp = new THREE.Object3D();
-	var linesData = [];
 	var particleTexture = new THREE.TextureLoader().load("img/lf3.png");
 
 	//line vars

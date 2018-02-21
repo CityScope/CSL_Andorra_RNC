@@ -15,9 +15,10 @@ gui.add(params, "animCamBool").name("Rotate Camera").onChange(function () {
 gui.add(params, "rotSpeed", 0, 0.0010).name("Rotation Speed");
 //paths
 gui.add(params, "paths").name("Static Users").onChange(function (bool) {
-	if (StaticLnGrp != null) {
-		StaticLnGrp.visible = bool;
-		StaticPplGrp.visible = bool;
+	if (pplLinesGrp != null) {
+		// StaticLnGrp.visible = bool;
+		// StaticPplGrp.visible = bool;
+		pplLinesGrp.visible = bool;
 	}
 });
 // gui.add(params, 'nation', ['All', 'FR', 'SP', 'Others']);
