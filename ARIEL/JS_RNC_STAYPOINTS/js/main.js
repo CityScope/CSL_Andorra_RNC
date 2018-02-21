@@ -224,12 +224,13 @@ function ThreeJS() {
 		requestAnimationFrame(animate);
 		render();
 		controls.update();
+		TWEEN.update();
+
 	}
 
 	function render() {
 		//raycast
 		raycastPersonDetails();
-		TWEEN.update();
 		renderer.render(scene, camera);
 	}
 }
