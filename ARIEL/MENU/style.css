@@ -19,6 +19,10 @@ body {
     color: rgb(0, 0, 0);
 }
 
+.modal-lg {
+        max-width: 75% !important;
+}
+
 h1,
 h2,
 h3,
