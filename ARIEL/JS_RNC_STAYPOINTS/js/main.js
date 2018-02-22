@@ -3,7 +3,7 @@ var container;
 var scene;
 var renderer;
 var controls;
-var camera;
+var camera, orthoCam;
 var axes;
 //
 // MOUSE AND RAYCAST
@@ -187,6 +187,15 @@ function ThreeJS() {
 		if (camera === undefined) {
 			camera = new THREE.PerspectiveCamera(70, SCREEN_WIDTH / SCREEN_HEIGHT, 1, 10000);
 			camera.position.set(100, 100, 0);
+
+			//ortho cam 
+			let frustumSize = 1000;
+			let aspect = window.innerWidth / window.innerHeight;
+
+			orthoCam = new THREE.OrthographicCamera
+				(frustumSize * aspect / - 2, frustumSize * aspect / 2, frustumSize / 2, frustumSize / - 2, 1, 2000);
+			orthoCam.position.y = 400;
+
 		}
 		controls = new THREE.OrbitControls(camera);
 

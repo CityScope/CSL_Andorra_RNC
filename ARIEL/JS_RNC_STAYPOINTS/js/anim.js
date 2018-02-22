@@ -85,6 +85,7 @@ function animPeople(data) {
 		}
 	}
 	scene.add(pplLinesGrp);
+	//start with hidden lines 
 	pplLinesGrp.visible = false;
 }
 
