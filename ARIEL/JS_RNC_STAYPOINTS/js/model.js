@@ -26,11 +26,12 @@ function conModel() {
         },
         // called when loading is in progresses
         function (xhr) {
-            percentComplete = xhr.loaded / xhr.total * 100;
-            console.log(Math.round(percentComplete, 2) + '% downloaded');
-            if (Math.round(percentComplete, 2) <= 99) {
-                prgsDiv.innerHTML = Math.round(percentComplete, 2) + '%'
+            console.log(xhr);
 
+            percentComplete = (xhr.loaded / xhr.total) * 100;
+            // console.log(Math.round(percentComplete, 2) + '% downloaded');
+            if (Math.round(percentComplete, 2) <= 99) {
+                prgsDiv.innerHTML = "Loading... " + Math.round(percentComplete, 2) + '%'
             } else {
                 prgsDiv.innerHTML = null;
             }
