@@ -7,7 +7,7 @@ var params = {
 	camBool: true,
 	rotSpeed: 0.0001,
 	paths: false,
-	amen: false,
+	amen: true,
 };
 gui.add(params, "animCamBool").name("Rotate Camera").onChange(function () {
 	stopSpinBool = !stopSpinBool;

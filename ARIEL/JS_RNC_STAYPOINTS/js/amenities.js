@@ -16,7 +16,7 @@
 $.get("data/amen.csv", function (d) {
     console.log("loaded csv");
     csvToamenArr(d);
-});
+}, "text");
 
 function csvToamenArr(d) {
     var amenArr = [];
@@ -42,5 +42,5 @@ function drawAmenities(amenArr) {
         amenGrp.add(amemSprite);
     }
     scene.add(amenGrp);
-    amenGrp.visible = false;
+    // amenGrp.visible = false;
 }
