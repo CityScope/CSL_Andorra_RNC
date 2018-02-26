@@ -7,9 +7,12 @@ fetch("data/amen.csv")
         // console.log(d);
         csvToamenArr(d);
     })
-// .catch(function () {
-//     console.log("error");
-// });
+    .catch(function () {
+        console.log("error");
+    });
+
+
+
 
 function csvToamenArr(d) {
     var amenArr = [];

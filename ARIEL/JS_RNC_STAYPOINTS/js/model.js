@@ -23,7 +23,8 @@ function conModel() {
         },
         // called when loading is in progresses
         function (xhr) {
-            if (xhr.loaded !== xhr.total) {
+
+            if (xhr.loaded < xhr.total) {
                 prgsDiv.innerHTML = "Loading... "
             } else {
                 prgsDiv.innerHTML = null;
