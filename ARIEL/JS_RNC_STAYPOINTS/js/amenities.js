@@ -11,6 +11,7 @@
 //         console.log("error");
 //     });
 
+
 //JQ method get 
 $.get("data/amen.csv", function (d) {
     console.log("loaded csv");
@@ -27,12 +28,8 @@ function csvToamenArr(d) {
     drawAmenities(amenArr);
 }
 
-//declare global
-var amenGrp = new THREE.Object3D();
 var amenTexture = new THREE.TextureLoader().load("img/amen.png");
-
 function drawAmenities(amenArr) {
-
     for (let i = 0; i < amenArr.length; i++) {
         var spriteMaterial = new THREE.SpriteMaterial({
             map: amenTexture,

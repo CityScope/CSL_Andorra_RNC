@@ -19,6 +19,8 @@ var epochDay = 86400;
 ////VIZ  VARS ////////////
 // var StaticLnGrp, StaticPplGrp;
 var pplLinesGrp = new THREE.Object3D();
+//declare global
+var amenGrp = new THREE.Object3D();
 
 var colors = {
 	spain: 0xF26101,
