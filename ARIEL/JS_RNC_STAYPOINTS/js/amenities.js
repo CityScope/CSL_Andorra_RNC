@@ -1,18 +1,22 @@
-fetch("data/amen.csv")
-    // fetch("https://cityio.media.mit.edu/api/table/virtual_table")
-    .then(function (d) {
-        // return d.json();
-        return d.text();
-    }).then(function (d) {
-        // console.log(d);
-        csvToamenArr(d);
-    })
-    .catch(function () {
-        console.log("error");
-    });
+// fetch("data/amen.csv")
+//     // fetch("https://cityio.media.mit.edu/api/table/virtual_table")
+//     .then(function (d) {
+//         // return d.json();
+//         return d.text();
+//     }).then(function (d) {
+//         // console.log(d);
+//         csvToamenArr(d);
+//     })
+//     .catch(function () {
+//         console.log("error");
+//     });
 
+//JQ method get 
 
-
+$.get("data/amen.csv", function (d) {
+    console.log("loaded csv");
+    csvToamenArr(d);
+});
 
 function csvToamenArr(d) {
     var amenArr = [];
