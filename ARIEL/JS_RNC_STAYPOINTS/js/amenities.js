@@ -12,7 +12,6 @@
 //     });
 
 //JQ method get 
-
 $.get("data/amen.csv", function (d) {
     console.log("loaded csv");
     csvToamenArr(d);
