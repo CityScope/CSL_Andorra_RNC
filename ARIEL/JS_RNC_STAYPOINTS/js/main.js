@@ -5,14 +5,6 @@ var renderer;
 var controls;
 var camera, orthoCam;
 var axes;
-//
-// MOUSE AND RAYCAST
-var mouse = new THREE.Vector2();
-var mouseX = 0,
-	mouseY = 0;
-var raycaster = new THREE.Raycaster();
-var threshold = 0.1;
-raycaster.params.Points.threshold = threshold;
 
 //
 var SCREEN_WIDTH = window.innerWidth;
@@ -253,11 +245,6 @@ function onWindowResize(event) {
 	camera.updateProjectionMatrix();
 	renderer.setSize(window.innerWidth, window.innerHeight);
 }
-// ////MOUSE ////////
-// function onDocumentMouseMove(event) {
-// 	mouseX = (event.clientX - windowHalfX) / 2;
-// 	mouseY = (event.clientY - windowHalfY) / 2;
-// }
 
 function onDocumentMouseMove(event) {
 	event.preventDefault();

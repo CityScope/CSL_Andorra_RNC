@@ -20,18 +20,11 @@ function conModel() {
             scene.add(andorraModel);
             //
             console.log("Model loading is done")
-            // animPeople(dataSorted);
-            // StaticPplViz(dataSorted);
-
         },
         // called when loading is in progresses
         function (xhr) {
-            console.log(xhr);
-
-            percentComplete = (xhr.loaded / xhr.total) * 100;
-            // console.log(Math.round(percentComplete, 2) + '% downloaded');
-            if (Math.round(percentComplete, 2) <= 99) {
-                prgsDiv.innerHTML = "Loading... " + Math.round(percentComplete, 2) + '%'
+            if (xhr.loaded !== xhr.total) {
+                prgsDiv.innerHTML = "Loading... "
             } else {
                 prgsDiv.innerHTML = null;
             }

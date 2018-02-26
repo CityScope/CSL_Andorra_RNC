@@ -1,3 +1,12 @@
+// MOUSE AND RAYCAST
+var mouse = new THREE.Vector2();
+var mouseX = 0,
+	mouseY = 0;
+var raycaster = new THREE.Raycaster();
+var threshold = 0.1;
+raycaster.params.Points.threshold = threshold;
+
+
 function animPeople(data) {
 
 	/////////////////////////////////////////////////
@@ -23,7 +32,6 @@ function animPeople(data) {
 	var GroupTimes = Object.keys(groupIt(data, ['S[0].s']))
 
 	//THREE static vars 
-	var pplGrp = new THREE.Object3D();
 	var pplTexture = new THREE.TextureLoader().load("img/lf4.png");
 
 	// Div text 
@@ -73,14 +81,15 @@ function animPeople(data) {
 					"From " + (grp[person].N) + "  and stayed " +
 					Object.values(grp[person].S).length + " times."
 
-				let pLine = drawLine(grp[person], pplSprite, pplSprite.material.opacity);
-				pplLinesGrp.add(pLine);
-
 				//add this person to scene 
 				scene.add(pplSprite);
 
 				//pass stay events of person and it's visual rep. to anim method
 				animStays(pplSprite, Object.values(grp[person].S));
+
+				//Draw lines for each person
+				let pLine = drawLine(grp[person], pplSprite, pplSprite.material.opacity);
+				pplLinesGrp.add(pLine);
 			}
 		}
 	}
@@ -88,7 +97,6 @@ function animPeople(data) {
 	//start with hidden lines 
 	pplLinesGrp.visible = false;
 }
-
 
 function drawLine(person, personSptire, opacity) {
 	//line vars
