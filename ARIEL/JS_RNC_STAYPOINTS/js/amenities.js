@@ -15,7 +15,7 @@
 //JQ method get 
 $.get("data/amen.csv", function (d) {
     console.log("loaded csv");
-    csvToamenArr(d);
+    drawAmenities(csvToamenArr(d));
 }, "text");
 
 function csvToamenArr(d) {
@@ -25,7 +25,7 @@ function csvToamenArr(d) {
         let a = lines[i].split(',')
         amenArr.push(a);
     }
-    drawAmenities(amenArr);
+    return amenArr;
 }
 
 var amenTexture = new THREE.TextureLoader().load("img/amen.png");
