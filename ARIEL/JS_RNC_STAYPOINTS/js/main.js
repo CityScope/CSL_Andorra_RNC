@@ -145,7 +145,6 @@ $(window).on("load", parseJson());
 function parseJson() {
 	$.getJSON("data/all.json", function (data) {
 		console.log("loaded page and data from json");
-
 		function dataSort(a, b) {
 			return a.S[0].s - b.S[0].s;
 		}
@@ -155,6 +154,12 @@ function parseJson() {
 		conModel();
 		animPeople(data);
 	});
+
+	//JQ method get 
+	$.get("data/amen.csv", function (d) {
+		console.log("loaded csv");
+		drawAmenities(csvToamenArr(d));
+	}, "text");
 }
 
 

@@ -12,12 +12,6 @@
 //     });
 
 
-//JQ method get 
-$.get("data/amen.csv", function (d) {
-    console.log("loaded csv");
-    drawAmenities(csvToamenArr(d));
-}, "text");
-
 function csvToamenArr(d) {
     var amenArr = [];
     var lines = d.split('\n')
