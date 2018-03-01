@@ -1,5 +1,0 @@
-This folder contains scripts for determining the period of time covered by RNC files in each folder on the server.
-
-Run hoursCovered.py to loop through each file in each folder and determine the number of RNC observations falling in each hour period. The output of this script is a pickle file ‘hoursCovered.p’ containing a Python dictionary where the top level keys are the RNC folders. For each of the folders there is another Python dictionary where the key is the beginning of the hour in epoch UTC format and the value is the number of RNC observations falling in that hour.
-
-Run plotHoursCovered.py to read the ‘hoursCovered.p’ file and create a bar plot showing the hours covered by the RNC files in each folder. This script also creates a json file where the keys are the beginning of the hour in string UTC format and the value is the number of RNC observations falling in that hour.

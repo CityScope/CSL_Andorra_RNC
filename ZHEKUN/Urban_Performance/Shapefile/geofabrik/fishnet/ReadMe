@@ -1,7 +1,0 @@
-Fishnet and Feature Vector of Grid Cells:
-
-0_Feature_Vector.csv: raw feature vector value of different cells (including binary, numeric etc.)
-
-Shapefiles in UTM31N:
-fishnet_polygon_25m_centorid_new.shp - 25m*25m grid cells polygon
-fishnet_polygon_25m.shp - centered of 25m*25m grid cells
