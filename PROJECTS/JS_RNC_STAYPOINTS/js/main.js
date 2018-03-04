@@ -5,6 +5,7 @@ var renderer;
 var controls;
 var camera, orthoCam;
 var axes;
+var light, light2;
 
 //
 var SCREEN_WIDTH = window.innerWidth;
@@ -20,7 +21,6 @@ var epochDay = 86400;
 // var StaticLnGrp, StaticPplGrp;
 var pplLinesGrp = new THREE.Object3D();
 //declare global
-var amenGrp = new THREE.Object3D();
 
 var colors = {
 	spain: 0xF26101,
@@ -155,13 +155,8 @@ function parseJson() {
 		ThreeJS();
 		conModel();
 		animPeople(data);
+		amenities();
 	});
-
-	//JQ method get 
-	// $.get("data/amen.csv", function (d) {
-	// 	console.log("loaded csv");
-	// 	drawAmenities(csvToamenArr(d));
-	// }, "text");
 }
 
 
@@ -196,33 +191,34 @@ function ThreeJS() {
 		controls.target.set(65, 0, 300); //center of andorra models
 
 		//light 
-		var light = new THREE.PointLight(0xF26101, .5, 10000);
+		light = new THREE.PointLight(0xF26101, 0.5, 10000);
 		light.position.set(-500, 1000, 500);
-		var light2 = new THREE.PointLight(0x0071BC, .5, 10000);
+		light2 = new THREE.PointLight(0x0071BC, .5, 10000);
 		light2.position.set(500, 1000, -500);
 		scene.add(light, light2);
 
-		////////////////////////////
-		////AXIS GRID HELPERS///////
-		////////////////////////////
-		axes = new THREE.AxisHelper(10000);
-		// scene.add(axes);
-		//grid helper 
 
-		for (let t = 0; t < 24; t++) {
-			var gridHelper = new THREE.GridHelper(10000, 2, "white", colors.background);
-			gridHelper.position.y = t * 60;
-			gridHelper.position.x = 0;
-			// scene.add(gridHelper);
-		}
+		////AXIS GRID HELPERS
+		// axes = new THREE.AxisHelper(10000);
+		// scene.add(axes);
+
+		//grid helper 
+		// for (let t = 0; t < 24; t++) {
+		// 	var gridHelper = new THREE.GridHelper(10000, 2, "white", colors.background);
+		// 	gridHelper.position.y = t * 60;
+		// 	gridHelper.position.x = 0;
+		// 	scene.add(gridHelper);
+		// }
 
 		//FOG
-		scene.fog = new THREE.Fog(0x01070E, 1, 7000);
+		scene.fog = new THREE.Fog(0x01070E, 1, 5000);
 
 		//CALL EVENTS METHODS
 		window.addEventListener("resize", onWindowResize, false);
-		// camSpin();
-		topCam();
+
+		//start mode here
+		camSpin();
+		// topCam();
 	}
 
 	function animate() {
@@ -239,9 +235,12 @@ function ThreeJS() {
 	}
 }
 
+
+//camera methods 
+
 var camSpinBool;
-//camera spin
 function camSpin() {
+	camera.up.set(0, 1, 0);
 	camera.fov = 70;
 	controls.enabled = false;
 	timer = Date.now() * params.rotSpeed;
@@ -254,21 +253,21 @@ function camSpin() {
 }
 
 function cancelSpin() {
+	camera.up.set(0, 1, 0);
 	camSpinBool = cancelAnimationFrame(camSpinBool);
 	controls.enabled = true;
 }
 
 function topCam() {
-	camera.rotation.order = "YXZ";
+	let rotAng = Math.atan2(pul.z - pur.z, pul.x - pur.x);
 	camSpinBool = cancelAnimationFrame(camSpinBool);
 	camera.position.x = camLookAt.x;
 	camera.position.z = camLookAt.z;
-	camera.position.y = 3000;
+	camera.position.y = 4000;
 	camera.fov = 5;
 	camera.lookAt(camLookAt); //center of adorra models
-	let rotAng = Math.atan2(pul.z - pur.z, pul.x - pur.x);
-	camera.updateProjectionMatrix();
 	controls.enabled = true;
-	controls.object.rotation.x = (rotAng);
-	controls.update()
+	camera.up.set(-rotAng, -rotAng, 0);
+	controls.update();
+	camera.updateProjectionMatrix();
 }
