@@ -31,7 +31,7 @@ var colors = {
 };
 
 var camLookAt = new THREE.Vector3(65, 0, 300); //center of adorra models
-var stopSpinBool = true;
+var requestId;
 
 ////GEO LOC VARS////////////
 var ul = [42.505086, 1.509961];
@@ -116,22 +116,24 @@ function colorByNation(nation) {
 	return color;
 }
 
-function camSpin() {
-	controls.enabled = false;
-	timer = Date.now() * params.rotSpeed;
-	camera.position.x = camLookAt.x + Math.sin(timer) * 200;
-	camera.position.y = 100;
-
-	camera.position.z = camLookAt.z + Math.cos(timer) * 200;
-	camera.lookAt(camLookAt); //center of adorra models
-
-
-	if (!stopSpinBool) {
-		controls.enabled = true;
-		return;
-	}
-	requestId = requestAnimationFrame(camSpin);
+/////WINDOW RESIZE//////////
+function onWindowResize(event) {
+	windowHalfX = window.innerWidth / 2;
+	windowHalfY = window.innerHeight / 2;
+	camera.aspect = window.innerWidth / window.innerHeight;
+	camera.updateProjectionMatrix();
+	renderer.setSize(window.innerWidth, window.innerHeight);
 }
+
+function onDocumentMouseMove(event) {
+	event.preventDefault();
+	mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+	mouse.y = - (event.clientY / window.innerHeight) * 2 + 1;
+	document.body.style.cursor = 'default';
+
+}
+
+document.addEventListener('mousemove', onDocumentMouseMove, false);
 
 
 //////////////////////////////////////////////////////
@@ -156,10 +158,10 @@ function parseJson() {
 	});
 
 	//JQ method get 
-	$.get("data/amen.csv", function (d) {
-		console.log("loaded csv");
-		drawAmenities(csvToamenArr(d));
-	}, "text");
+	// $.get("data/amen.csv", function (d) {
+	// 	console.log("loaded csv");
+	// 	drawAmenities(csvToamenArr(d));
+	// }, "text");
 }
 
 
@@ -186,18 +188,11 @@ function ThreeJS() {
 		if (camera === undefined) {
 			camera = new THREE.PerspectiveCamera(70, SCREEN_WIDTH / SCREEN_HEIGHT, 1, 10000);
 			camera.position.set(100, 100, 0);
-
-			//ortho cam 
-			let frustumSize = 1000;
-			let aspect = window.innerWidth / window.innerHeight;
-
-			orthoCam = new THREE.OrthographicCamera
-				(frustumSize * aspect / - 2, frustumSize * aspect / 2, frustumSize / 2, frustumSize / - 2, 1, 2000);
-			orthoCam.position.y = 400;
-
 		}
-		controls = new THREE.OrbitControls(camera);
 
+		//SUPER IMPORTANT: renderer.domElement solves DAT.GUI 
+		// issue with drop downmenu not reposniding 
+		controls = new THREE.OrbitControls(camera, renderer.domElement);
 		controls.target.set(65, 0, 300); //center of andorra models
 
 		//light 
@@ -222,19 +217,19 @@ function ThreeJS() {
 		}
 
 		//FOG
-		scene.fog = new THREE.Fog(0x01070E, 1, 3000);
+		scene.fog = new THREE.Fog(0x01070E, 1, 7000);
 
 		//CALL EVENTS METHODS
 		window.addEventListener("resize", onWindowResize, false);
-		camSpin();
+		// camSpin();
+		topCam();
 	}
 
 	function animate() {
-		requestAnimationFrame(animate);
 		render();
 		controls.update();
 		TWEEN.update();
-
+		requestAnimationFrame(animate);
 	}
 
 	function render() {
@@ -244,21 +239,36 @@ function ThreeJS() {
 	}
 }
 
-/////WINDOW RESIZE//////////
-function onWindowResize(event) {
-	windowHalfX = window.innerWidth / 2;
-	windowHalfY = window.innerHeight / 2;
-	camera.aspect = window.innerWidth / window.innerHeight;
+var camSpinBool;
+//camera spin
+function camSpin() {
+	camera.fov = 70;
+	controls.enabled = false;
+	timer = Date.now() * params.rotSpeed;
+	camera.position.x = camLookAt.x + Math.sin(timer) * 200;
+	camera.position.y = 100;
+	camera.position.z = camLookAt.z + Math.cos(timer) * 200;
+	camera.lookAt(camLookAt); //center of adorra models
 	camera.updateProjectionMatrix();
-	renderer.setSize(window.innerWidth, window.innerHeight);
+	camSpinBool = requestAnimationFrame(camSpin);
 }
 
-function onDocumentMouseMove(event) {
-	event.preventDefault();
-	mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-	mouse.y = - (event.clientY / window.innerHeight) * 2 + 1;
-	document.body.style.cursor = 'default';
-
+function cancelSpin() {
+	camSpinBool = cancelAnimationFrame(camSpinBool);
+	controls.enabled = true;
 }
 
-document.addEventListener('mousemove', onDocumentMouseMove, false);
+function topCam() {
+	camera.rotation.order = "YXZ";
+	camSpinBool = cancelAnimationFrame(camSpinBool);
+	camera.position.x = camLookAt.x;
+	camera.position.z = camLookAt.z;
+	camera.position.y = 3000;
+	camera.fov = 5;
+	camera.lookAt(camLookAt); //center of adorra models
+	let rotAng = Math.atan2(pul.z - pur.z, pul.x - pur.x);
+	camera.updateProjectionMatrix();
+	controls.enabled = true;
+	controls.object.rotation.x = (rotAng);
+	controls.update()
+}

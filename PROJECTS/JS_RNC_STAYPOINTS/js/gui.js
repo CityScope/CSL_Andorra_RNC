@@ -3,25 +3,27 @@ var gui = new dat.GUI({
 	width: 300
 });
 var params = {
-	animCamBool: true,
-	camBool: true,
 	rotSpeed: 0.0001,
 	paths: false,
 	amen: true,
+	camera: 'top view'
 };
-gui.add(params, "animCamBool").name("Rotate Camera").onChange(function () {
-	stopSpinBool = !stopSpinBool;
-	camSpin();
-});
 
+//camera spin
+
+gui.add(params, 'camera', ['rotate', 'free', 'top view'])
+	.onChange(function (c) {
+		if (c == 'rotate') {
+			camSpin();
+		} else if (c == 'free') {
+			cancelSpin();
+		} else if (c == 'top view') {
+			topCam();
+		}
+	});
+
+//rotation speed
 gui.add(params, "rotSpeed", 0, 0.0010).name("Rotation Speed");
-
-// gui.add(params, "camBool").name("Active Camera").onChange(function () {
-// 	scene.activeCamera = (camBool ? orthoCam : camera);
-// 	console.log(scene.activeCamera);
-// });
-
-
 
 
 gui.add(params, "paths").name("Users paths").onChange(function (bool) {
