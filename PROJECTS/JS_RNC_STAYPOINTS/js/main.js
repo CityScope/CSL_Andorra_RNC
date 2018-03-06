@@ -168,8 +168,10 @@ function ThreeJS() {
 	animate();
 
 	function init() {
-		container = document.createElement("Div");
+		container = document.createElement("three");
 		document.body.appendChild(container);
+
+
 		scene = new THREE.Scene();
 		renderer = new THREE.WebGLRenderer({
 			alpha: true,
@@ -211,7 +213,7 @@ function ThreeJS() {
 		// }
 
 		//FOG
-		scene.fog = new THREE.Fog(0x01070E, 1, 5000);
+		scene.fog = new THREE.Fog(0x01070E, 1, 10000);
 
 		//CALL EVENTS METHODS
 		window.addEventListener("resize", onWindowResize, false);
@@ -259,7 +261,7 @@ function cancelSpin() {
 }
 
 function topCam() {
-	let rotAng = Math.atan2(pul.z - pur.z, pul.x - pur.x);
+	// let rotAng = Math.atan2(pul.z - pur.z, pul.x - pur.x);
 	camSpinBool = cancelAnimationFrame(camSpinBool);
 	camera.position.x = camLookAt.x;
 	camera.position.z = camLookAt.z;
@@ -267,7 +269,8 @@ function topCam() {
 	camera.fov = 5;
 	camera.lookAt(camLookAt); //center of adorra models
 	controls.enabled = true;
-	camera.up.set(-rotAng, -rotAng, 0);
+	// camera.up.set(-rotAng, -rotAng, 0);
 	controls.update();
 	camera.updateProjectionMatrix();
 }
+

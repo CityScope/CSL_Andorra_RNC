@@ -17,6 +17,11 @@ body {
     pointer-events: none;
 }
 
+.dg.ac{
+z-index: 10000;
+}
+
+
 .row {
     margin-top: 2rem;
     margin-bottom: 2rem

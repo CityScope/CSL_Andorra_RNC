@@ -44,3 +44,7 @@ gui.add(params, "amen").name("Amenities").onChange(function (bool) {
 		amenGrp.visible = bool;
 	}
 });
+
+
+var prj = { projection_map: function () { window.open("prjMap.html") } };
+gui.add(prj, 'projection_map');
