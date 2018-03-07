@@ -47,4 +47,9 @@ gui.add(params, "amen").name("Amenities").onChange(function (bool) {
 
 
 var prj = { projection_map: function () { window.open("prjMap.html") } };
-gui.add(prj, 'projection_map');
+gui.add(prj, 'projection_map').name("Projection Mapping");
+
+var info = {
+	hide_info: function () { $("#main").toggle(); }
+};
+gui.add(info, 'hide_info').name("Toggle info");

@@ -31,7 +31,7 @@
     <script src="js/gui.js"></script>
     <script src="js/amenities.js"></script>
 
-    <div id=main class="container-fluid overCanvas">
+    <div id="main" class="container-fluid overCanvas">
         <div class="row">
             <div class="col-sm-4">
             </div>
@@ -49,7 +49,6 @@
                 Each stay event is represented with a vertical line and user's movement with a diagonal one.
             </div>
         </div>
-
         <div class="row">
             <div class="col">
                 <a href="https://www.media.mit.edu/projects/cityscope/overview/" target="blank">
@@ -57,13 +56,15 @@
                 </a>
             </div>
         </div>
-        <div class="row">
+    </div>
 
-            <div class="col">
-                <div id="timeDiv"></div>
-            </div>
+    <div id='timeDivContainer' class="row timeDivContainer">
+        <div class="col">
+            <div id="timeDiv"></div>
         </div>
     </div>
+
+
 
 </body>
 
@@ -71,7 +72,7 @@
     var configObject = {
         autoSave: false,
         autoLoad: false,
-        layers: ["main"]
+        layers: ["timeDivContainer"]
     };
     var maptastic = Maptastic(configObject);
 </script>

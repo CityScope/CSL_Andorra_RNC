@@ -98,6 +98,21 @@ function animPeople(data) {
 	pplLinesGrp.visible = false;
 }
 
+
+function animStays(obj, personStayEvents) {
+	if (personStayEvents.length > 0) {
+		for (let i = 0; i < personStayEvents.length; i++) {
+			var tween = new TWEEN.Tween(obj.position).to({
+				x: latCor(personStayEvents[i].la),
+				y: (personStayEvents[i].l) / 600,
+				// y: 0,
+				z: lonCor(personStayEvents[i].lo)
+			}, personStayEvents[i].l).start();
+		}
+	}
+}
+
+
 function drawLine(person, personSptire, opacity) {
 	//line vars
 	person = Object.values(person.S);
@@ -128,19 +143,6 @@ function drawLine(person, personSptire, opacity) {
 	personStayLine.material.opacity = opacity;
 	personStayLine.visible = false;
 	return personStayLine;
-}
-
-function animStays(obj, personStayEvents) {
-	if (personStayEvents.length > 0) {
-		for (let i = 0; i < personStayEvents.length; i++) {
-			var tween = new TWEEN.Tween(obj.position).to({
-				x: latCor(personStayEvents[i].la),
-				y: (personStayEvents[i].l) / 600,
-				// y: 0,
-				z: lonCor(personStayEvents[i].lo)
-			}, personStayEvents[i].l).start();
-		}
-	}
 }
 
 //Tween the selceted person

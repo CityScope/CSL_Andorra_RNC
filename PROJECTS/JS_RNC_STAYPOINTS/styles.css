@@ -41,3 +41,8 @@ h1 {
     font-size: 50px;
     z-index: 1000;
 }
+
+.timeDivContainer{
+    height: 5rem;
+    width: 20rem;
+}
