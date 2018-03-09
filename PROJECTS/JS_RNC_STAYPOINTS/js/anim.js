@@ -44,7 +44,7 @@ function animPeople(data) {
 				//call drwaing method by group number 'i'
 				drawGrp(i)
 				//epoch time to GMT into div
-				timeDiv.innerHTML = new Date((GroupTimes[i]))
+				timeDiv.innerHTML = new Date((GroupTimes[i] * 1000) + 1.44e+7)
 				// the delay time X the iterator 
 			}, (GroupTimes[i] - dataDate) * i);
 		})(j);
