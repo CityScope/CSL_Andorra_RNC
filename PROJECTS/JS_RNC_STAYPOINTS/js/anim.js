@@ -44,10 +44,11 @@ function animPeople(data) {
 				//call drwaing method by group number 'i'
 				drawGrp(i)
 				//epoch time to GMT into div
-				timeDiv.innerHTML = new Date((GroupTimes[i]) * 1000)
-				// the delay time times the iterator 
-			}, ((GroupTimes[i] - dataDate) * i) / 10);
+				timeDiv.innerHTML = new Date((GroupTimes[i]))
+				// the delay time X the iterator 
+			}, (GroupTimes[i] - dataDate) * i);
 		})(j);
+
 	}
 
 	// the drawing function itself
@@ -68,8 +69,13 @@ function animPeople(data) {
 				pplSprite.material.transparent = true;
 				pplSprite.scale.set(5, 5, 5);
 
+
+
 				//location of first known pnt of this peron in this gorup  // (grp[person].S[0].s - dataDate) / 600,
-				pplSprite.position.set(latCor(grp[person].S[0].la), 0, lonCor(grp[person].S[0].lo));
+				pplSprite.position.set
+					(latCor(grp[person].S[0].la),
+					((grp[person].S[0].s - dataDate) / 60),
+					lonCor(grp[person].S[0].lo));
 
 				// lower opacity for andorra 
 				if (grp[person].N != "Andorra") {
@@ -103,7 +109,7 @@ function animPeople(data) {
 //WIP to fix paths of stays 
 function animStays(obj, personStayEvents) {
 	if (personStayEvents.length > 0) {
-
+		///
 		// let stEvLen = null;
 		// for (let i = 0; i < personStayEvents.length; i++) {
 		// 	stEvLen += personStayEvents[i].l
@@ -121,13 +127,14 @@ function animStays(obj, personStayEvents) {
 
 		// for now ,this takes the first and last stay location and
 		// interpulate all the time between. Could be done more accurate.
+		///
 		let stEvLen = (personStayEvents[personStayEvents.length - 1].e - personStayEvents[0].s);
+
 		var tween = new TWEEN.Tween(obj.position).to({
 			x: latCor(personStayEvents[personStayEvents.length - 1].la),
 			y: stEvLen / 1000,
 			z: lonCor(personStayEvents[personStayEvents.length - 1].lo)
 		}, stEvLen).start();
-
 	}
 }
 
@@ -144,14 +151,14 @@ function drawLine(person, personSptire, opacity) {
 
 		let p = new THREE.Vector3();
 		p.x = latCor(person[i].la);
-		p.y = (person[i].s - dataDate) / 600; //start time for stay event as Y axis 
+		p.y = (person[i].s - dataDate) / 1000; //start time for stay event as Y axis 
 		// p.y = 0
 		p.z = lonCor(person[i].lo);
 
 		//push vertices 
 		geometry.vertices.push(new THREE.Vector3(p.x, p.y, p.z));
 		//push the  'stay' time as vertical Y axis 
-		geometry.vertices.push(new THREE.Vector3(p.x, p.y + person[i].l / 600, p.z));
+		geometry.vertices.push(new THREE.Vector3(p.x, p.y + person[i].l / 1000, p.z));
 	}
 	var material = new THREE.LineBasicMaterial({
 		color: personSptire.material.color,

@@ -10,7 +10,6 @@ var params = {
 };
 
 //camera spin
-
 gui.add(params, 'camera', ['rotate', 'free', 'top view'])
 	.onChange(function (c) {
 		if (c == 'rotate') {
@@ -53,3 +52,5 @@ var info = {
 	hide_info: function () { $("#main").toggle(); }
 };
 gui.add(info, 'hide_info').name("Toggle info");
+
+gui.close();
