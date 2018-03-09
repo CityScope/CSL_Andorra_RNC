@@ -126,7 +126,7 @@ function animStays(obj, personStayEvents) {
 			x: latCor(personStayEvents[personStayEvents.length - 1].la),
 			y: stEvLen / 1000,
 			z: lonCor(personStayEvents[personStayEvents.length - 1].lo)
-		}, stEvLen / 10).start();
+		}, stEvLen).start();
 
 	}
 }
