@@ -41,7 +41,7 @@ function animPeople(data) {
 	for (var j = 0; j <= groupedData.length; j++) {
 		(function (i) {
 			setTimeout(function () {
-				//call drwaing method
+				//call drwaing method by group number 'i'
 				drawGrp(i)
 				//epoch time to GMT into div
 				timeDiv.innerHTML = new Date((GroupTimes[i]) * 1000)
@@ -53,13 +53,15 @@ function animPeople(data) {
 	// the drawing function itself
 	function drawGrp(i) {
 		let grp = groupedData[i];
-		//fix nulled group 
+		//fixes nulled group if any
 		if (grp) {
 			for (let person = 0; person < grp.length; person++) {
+
 				var spriteMaterial = new THREE.SpriteMaterial({
 					map: pplTexture,
 					transparent: true
 				});
+
 				var pplSprite = new THREE.Sprite(spriteMaterial);
 				pplSprite.material.color.setHex(colorByNation(grp[person].N));
 				pplSprite.material.blending = THREE.AdditiveBlending;
@@ -98,17 +100,34 @@ function animPeople(data) {
 	pplLinesGrp.visible = false;
 }
 
-
+//WIP to fix paths of stays 
 function animStays(obj, personStayEvents) {
 	if (personStayEvents.length > 0) {
-		for (let i = 0; i < personStayEvents.length; i++) {
-			var tween = new TWEEN.Tween(obj.position).to({
-				x: latCor(personStayEvents[i].la),
-				y: (personStayEvents[i].l) / 600,
-				// y: 0,
-				z: lonCor(personStayEvents[i].lo)
-			}, personStayEvents[i].l).start();
-		}
+
+		// let stEvLen = null;
+		// for (let i = 0; i < personStayEvents.length; i++) {
+		// 	stEvLen += personStayEvents[i].l
+		// 	// console.log(personStayEvents[i]);
+		// }
+
+		// for (let i = 0; i < personStayEvents.length; i++) {
+		// 	var tween = new TWEEN.Tween(obj.position).to({
+		// 		x: latCor(personStayEvents[i].la),
+		// 		y: (personStayEvents[i].l) / 600,
+		// 		// y: 0,
+		// 		z: lonCor(personStayEvents[i].lo)
+		// 	}, personStayEvents[i].l).start();
+		// }
+
+		// for now ,this takes the first and last stay location and
+		// interpulate all the time between. Could be done more accurate.
+		let stEvLen = (personStayEvents[personStayEvents.length - 1].e - personStayEvents[0].s);
+		var tween = new TWEEN.Tween(obj.position).to({
+			x: latCor(personStayEvents[personStayEvents.length - 1].la),
+			y: stEvLen / 6000,
+			z: lonCor(personStayEvents[personStayEvents.length - 1].lo)
+		}, stEvLen / 10).start();
+
 	}
 }
 
@@ -120,7 +139,7 @@ function drawLine(person, personSptire, opacity) {
 	var geometry = new THREE.Geometry();
 	var personStayLine = null;
 
-	//itiirate through person's stay events
+	//itirate through person's stay events
 	for (let i = 0; i < person.length; i++) {
 
 		let p = new THREE.Vector3();

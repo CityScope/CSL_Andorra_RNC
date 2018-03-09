@@ -221,6 +221,7 @@ function ThreeJS() {
 		//start mode here
 		camSpin();
 		// topCam();
+		// cancelSpin();
 	}
 
 	function animate() {
