@@ -74,7 +74,8 @@ function animPeople(data) {
 				//location of first known pnt of this peron in this gorup  // (grp[person].S[0].s - dataDate) / 600,
 				pplSprite.position.set
 					(latCor(grp[person].S[0].la),
-					((grp[person].S[0].s - dataDate) / 60),
+					// ((grp[person].S[0].s - dataDate) / 60),
+					0,
 					lonCor(grp[person].S[0].lo));
 
 				// lower opacity for andorra 

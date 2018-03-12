@@ -156,6 +156,8 @@ function parseJson() {
 		conModel();
 		animPeople(data);
 		amenities();
+		;
+
 	});
 }
 
