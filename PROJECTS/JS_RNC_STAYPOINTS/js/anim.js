@@ -22,8 +22,8 @@ function animPeople(data) {
 		});
 	};
 
-	// clone the original data obj and sort it
-	// into a group of people with the same start time 
+	// clone the original data obj and  group it into sorted 
+	// lsit of people with the same start time 
 	var groupedData = Object.values(groupIt(data, ['S[0].s']))
 
 	// the start time of the first object in the group 
