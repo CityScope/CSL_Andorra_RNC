@@ -154,9 +154,16 @@ function parseJson() {
 		//CALLThreeJS METHODS
 		ThreeJS();
 		conModel();
-		animPeople(data);
 		amenities();
-		;
+
+		// start anim with key stroke 
+		// document.addEventListener('keydown', (event) => {
+		// 	const keyCode = event.key;
+		// 	if (keyCode == 's') {
+		animPeople(data);
+		// 		return;
+		// 	}
+		// }, false);
 
 	});
 }

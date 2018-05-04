@@ -6,6 +6,8 @@ var raycaster = new THREE.Raycaster();
 var threshold = 0.1;
 raycaster.params.Points.threshold = threshold;
 
+var playSpeed = 1;
+
 
 function animPeople(data) {
 
@@ -46,7 +48,7 @@ function animPeople(data) {
 				//epoch time to GMT into div
 				timeDiv.innerHTML = new Date((GroupTimes[i] * 1000) + (14400 * 1000))
 				// the delay time X the iterator 
-			}, (GroupTimes[i] - dataDate) * i);
+			}, (GroupTimes[i] - dataDate) * i / playSpeed);
 		})(j);
 
 	}
@@ -135,7 +137,7 @@ function animStays(obj, personStayEvents) {
 			x: latCor(personStayEvents[personStayEvents.length - 1].la),
 			y: stEvLen / 1000,
 			z: lonCor(personStayEvents[personStayEvents.length - 1].lo)
-		}, stEvLen).start();
+		}, stEvLen / playSpeed).start();
 	}
 }
 
