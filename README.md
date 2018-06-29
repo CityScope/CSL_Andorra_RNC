@@ -43,3 +43,13 @@ This method involves dividing Andorra’s study area into microscopic, regularly
 Diverse set of urban features are then defined and computed for each grid cell. Machine Learning algorithms (such as Random Forest) which model the occurrence of clusters as a function of these features are then trained on the city’s grid-cells. All through this process, the accuracy of this model is tested against unbiased random grid cells.
 
 Finally, the most prevailing urban features in correlation to the presence of clusters are extracted using this model. Of these, the presence of open space, impact of amenities, the degree of built-up area and the highest betweenness centrality of the road network nodes appeared to largely dominate. Additional models have been developed to explain other cluster characteristics such as diversity and persistence. 
+
+____
+
+Repo maintained by [Ariel Noyman](http://arielnoyman.com)
+
+#### Authors: Ariel Noyman. Ronan Doorley. Zhekun Xiong. Luis Alonso. Arnaud Grinard. Kent Larson 
+Massachusetts Institute of Technology,  
+77 Massachusetts Ave, Cambridge, MA 02139, USA 
+
+
