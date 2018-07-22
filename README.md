@@ -48,7 +48,7 @@ ____
 
 Repo maintained by [Ariel Noyman](http://arielnoyman.com)
 
-#### Authors: Ariel Noyman. Ronan Doorley. Zhekun Xiong. Luis Alonso. Arnaud Grinard. Kent Larson 
+#### Authors: Ariel Noyman. Ronan Doorley. Zhekun Xiong. Luis Alonso. Arnaud Grignard. Kent Larson 
 Massachusetts Institute of Technology,  
 77 Massachusetts Ave, Cambridge, MA 02139, USA 
 
