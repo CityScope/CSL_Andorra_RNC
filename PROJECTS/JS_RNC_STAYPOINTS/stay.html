@@ -1,34 +1,42 @@
 <html>
+  <!-- refreash page after x seconds -->
+  <meta http-equiv="refresh" content="600" />
 
-<!-- refreash page after x seconds -->
-<meta http-equiv="refresh" content="600">
+  <meta charset="utf-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
+  />
 
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-
-<head>
-
+  <head>
     <!-- IMPORTANT: BASE DIR FOR ALL LINKS!! -->
     <!-- <base href="ARIEL/JS_RNC_STAYPOINTS/"> -->
     <!-- IMPORTANT: BASE DIR FOR ALL LINKS!! -->
 
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto+Condensed"
+      rel="stylesheet"
+    />
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <!-- Loadash CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.5/lodash.js"></script>
     <script src="lib/three.js"></script>
-    <script src="https://threejs.org/examples/js/controls/OrbitControls.js"></script>
+    <script src="lib/OrbitControls.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/17.2.0/Tween.js"></script>
     <script src="lib/dat.gui.min.js"></script>
     <script src="lib/maptastic.js"></script>
 
     <!-- styles -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-        crossorigin="anonymous">
-    <link rel="stylesheet" href="styles.css">
-</head>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
 
-<body>
+  <body>
     <script src="js/main.js"></script>
     <script src="js/model.js"></script>
     <script src="js/anim.js"></script>
@@ -36,49 +44,54 @@
     <script src="js/amenities.js"></script>
 
     <div id="main" class="container-fluid overCanvas">
-        <div class="row">
-            <div class="col-sm-4">
-            </div>
+      <div class="row">
+        <div class="col-sm-4"></div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <h1>Where do people stay longer in Andorra?</h1>
         </div>
-        <div class="row">
-            <div class="col-sm-4">
-                <h1>Where do people stay longer in Andorra?</h1>
-            </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          This visualization represents the behavioral patterns of thousands of
+          French, Spanish and other visitors and tourists in Andorra La Vella,
+          during a single day in 2016. Each dot represents a telecom data point
+          aggregated from millions of events. Then, an algorithm tested each
+          individual for duration of 'stay', with an interval of 20 minutes.
+          Each stay event is represented with a vertical line and user's
+          movement with a diagonal one.
         </div>
-        <div class="row">
-            <div class="col-sm-4">
-                This visualization represents the behavioral patterns of thousands of French, Spanish and other visitors and tourists in
-                Andorra La Vella, during a single day in 2016. Each dot represents a telecom data point aggregated from millions
-                of events. Then, an algorithm tested each individual for duration of 'stay', with an interval of 20 minutes.
-                Each stay event is represented with a vertical line and user's movement with a diagonal one.
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <a href="https://www.media.mit.edu/projects/cityscope/overview/" target="blank">
-                    <img src="img/logosWhite.png" alt="MIT Media Lab" style="width:50px;height:50px;border:0;">
-                </a>
-            </div>
-        </div>
-    </div>
-
-    <div id='timeDivContainer' class="row timeDivContainer">
+      </div>
+      <div class="row">
         <div class="col">
-            <div id="timeDiv"></div>
+          <a
+            href="https://www.media.mit.edu/projects/cityscope/overview/"
+            target="blank"
+          >
+            <img
+              src="img/logosWhite.png"
+              alt="MIT Media Lab"
+              style="width:50px;height:50px;border:0;"
+            />
+          </a>
         </div>
+      </div>
     </div>
 
+    <div id="timeDivContainer" class="row timeDivContainer">
+      <div class="col">
+        <div id="timeDiv"></div>
+      </div>
+    </div>
+  </body>
 
-
-</body>
-
-<script>
+  <script>
     var configObject = {
-        autoSave: false,
-        autoLoad: false,
-        layers: ["timeDivContainer"]
+      autoSave: false,
+      autoLoad: false,
+      layers: ["timeDivContainer"]
     };
     var maptastic = Maptastic(configObject);
-</script>
-
+  </script>
 </html>
